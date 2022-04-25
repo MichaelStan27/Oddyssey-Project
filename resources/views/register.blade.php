@@ -5,6 +5,7 @@
 @section('content')
     <div class="container bg-white mx-auto rounded-lg shadow-md p-6 w-1/4">
         <form action="/register" method="POST">
+            @csrf
             <div class="mb-4">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name"

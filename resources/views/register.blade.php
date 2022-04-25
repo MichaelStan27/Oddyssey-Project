@@ -22,8 +22,8 @@
                     class="rounded-md w-full p-2 bg-gray-100 border-gray-200 border-2 outline-purple-300">
             </div>
             <div class="mb-4">
-                <label for="confirm_password">Confirm Password</label>
-                <input type="password" name="confirm_password" id="confirm_password"
+                <label for="password_confirmation">Confirm Password</label>
+                <input type="password" name="password_confirmation" id="password_confirmation"
                     class="rounded-md w-full p-2 bg-gray-100 border-gray-200 border-2 outline-purple-300">
             </div>
             <div class="flex justify-end gap-4 items-center">

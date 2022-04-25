@@ -11,6 +11,11 @@ class RegisterController extends Controller {
     }
 
     public function store(Request $request) {
-        dd($request);
+        // This will throw exception if validation fails
+        $request->validate([
+            'name' => ['required'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required', 'min:8', 'confirmed']
+        ]);
     }
 }

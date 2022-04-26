@@ -18,7 +18,6 @@
         <div class="container flex flex-col gap-4">
             @for ($i = 0; $i < 8; $i++)
                 @php
-                    
                     $image = $games[$i]['image'];
                     $title = $games[$i]['title'];
                     $cat = $games[$i]->category->name;

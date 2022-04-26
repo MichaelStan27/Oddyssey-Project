@@ -5,7 +5,7 @@
 @section('content')
     <div class="container bg-white mx-auto rounded-lg shadow-md p-6 w-1/4">
         @error('loginError')
-        <p class="bg-red-500 p-4 mb-2 text-center rounded-md text-white font-medium">{{ $message }}</p>
+            <p class="bg-red-500 p-4 mb-2 text-center rounded-md text-white font-medium">{{ $message }}</p>
         @enderror
         <form action="/login" method="POST">
             @csrf

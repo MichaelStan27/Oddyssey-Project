@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller {
     public function index(Request $request) {
-        // $request->query('q');
+        $q = $request->query('q');
+        $count = 10;
+
+        $results = $q ? Game::where('title', 'LIKE', "%$q%")->paginate($count) : Game::paginate($count);
+
         return view('search', [
-            'resutls' => Game::all()
+            'results' => $results
         ]);
     }
 }

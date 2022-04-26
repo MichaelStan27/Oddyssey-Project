@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.tab-active {
+    @apply after:content-[''] after:block after:w-full after:h-0.5 after:bg-purple-400;
+}

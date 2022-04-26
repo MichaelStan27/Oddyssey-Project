@@ -1,25 +1,64 @@
-<nav class="bg-white flex justify-between px-36 py-5 mb-5 font-medium text-lg">
+<nav class="bg-white flex justify-between px-36 mb-5 font-medium text-lg text-gray-600">
     <ul class="flex">
-        <li><a href="/" class="p-4">Dashboard</a></li>
-        <li><a href="" class="p-4">Cart</a></li>
+        <li class="px-4 tab-active">
+            <a href="/" class="px-2 block my-4">Dashboard</a>
+        </li class="px-4">
+        <li class="px-4"><a href="" class="px-2 block my-4">Cart</a></li>
         @auth
-            <li><a href="" class="p-4">Admin</a></li>
+            <li class="px-4"><a href="" class="px-2 block my-4">Admin</a></li>
         @endauth
     </ul>
 
     <ul class="flex">
-        @guest
-            <li><a href="/login" class="p-4">Login</a></li>
-            <li><a href="/register" class="p-4">Register</a></li>
-        @endguest
-        @auth
-            <li><a href="" class="p-4">{{ Auth::user()->name }}</a></li>
-            <li>
-                <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    <button type="submit" class="font-medium">Logout</button>
-                </form>
-            </li>
-        @endauth
+
+        <li class="px-4">
+            <div class="relative inline-block text-left my-4">
+                <div>
+                    <button type="button"
+                        class="inline-flex justify-center items-center w-full font-medium text-gray-70"
+                        id="user-menu-button">
+
+                        @if (Auth::check())
+                            {{ Auth::user()->name }}
+                        @else
+                            {{ 'Guest' }}
+                        @endif
+
+                        <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+
+                @guest
+                    <div class="origin-top-right absolute right-0 mt-1 rounded-md shadow-lg bg-white border border-gray-300 hidden"
+                        id="user-menu">
+                        <div class="py-1">
+                            <a href="/login"
+                                class="text-gray-700 block px-4 py-2 w-36 hover:bg-gray-200 font-normal text-base">Login</a>
+                            <a href="/register"
+                                class="text-gray-700 block px-4 py-2 w-36 hover:bg-gray-200 font-normal text-base">Register</a>
+                        </div>
+                    </div>
+                @endguest
+
+                @auth
+                    <div class="origin-top-right absolute right-0 mt-1 rounded-md shadow-lg bg-white border border-gray-300 hidden"
+                        id="user-menu">
+                        <div class="py-1">
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <button type="submit"
+                                    class="text-gray-700 text-left block px-4 py-2 w-36 hover:bg-gray-200 font-normal text-base">Logout</button>
+                            </form>
+                        </div>
+                    </div>
+                @endauth
+
+            </div>
+        </li>
     </ul>
 </nav>

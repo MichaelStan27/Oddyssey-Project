@@ -23,4 +23,4 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');

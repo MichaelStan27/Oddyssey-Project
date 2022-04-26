@@ -10,7 +10,7 @@
 </head>
 
 <body class="bg-gray-200">
-    @include('components.navbar')
+    @include('partials.navbar')
     @yield('content')
 </body>
 

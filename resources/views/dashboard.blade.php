@@ -4,6 +4,9 @@
 
 @section('content')
     <div class="container mx-auto mb-20">
+
+        @include('partials.searchbar')
+
         <h1 class="font-bold text-2xl mb-4">Featured Games</h1>
         <div class="container flex gap-5 mb-8">
             @for ($i = 0; $i < 5; $i++)

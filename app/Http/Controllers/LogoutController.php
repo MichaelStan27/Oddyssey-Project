@@ -8,6 +8,6 @@ use Illuminate\Support\Facades\Auth;
 class LogoutController extends Controller {
     public function store() {
         Auth::logout();
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
     }
 }

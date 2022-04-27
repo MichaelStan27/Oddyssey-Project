@@ -10,9 +10,11 @@
         <h1 class="font-bold text-2xl mb-4">Your Cart</h1>
         <div class="bg-white p-2 rounded-lg divide-gray-200 divide-y">
             <div class="mb-5">
-                @foreach ($carts as $cart_item)
-                    <x-cart-card :game="$cart_item->game"></x-cart-card>
-                @endforeach
+                @forelse ($carts as $cartItem)
+                    <x-cart-card :game="$cartItem->game" :cartId="$cartItem->id"></x-cart-card>
+                @empty
+                    <h1 class="text-xl text-gray-600 m-6">Cart is empty</h1>
+                @endforelse
             </div>
 
             <div class="flex justify-between items-center p-5">

@@ -14,12 +14,12 @@ class CartController extends Controller {
     public function index() {
         $user = Auth::user();
         $carts = $user->carts()->with('game')->get();
-        $carts_total = $user->carts()->join('games', 'carts.game_id', '=', 'games.id')->sum('price');
+        $cartsTotal = $user->carts()->join('games', 'carts.game_id', '=', 'games.id')->sum('price');
 
         return view('cart', [
             'carts' => $carts,
-            'carts_count' => $carts->count(),
-            'carts_total' => $carts_total
+            'cartsCount' => $carts->count(),
+            'cartsTotal' => $cartsTotal
         ]);
     }
 

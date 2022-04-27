@@ -18,10 +18,10 @@
             <div class="flex justify-between items-center p-5">
                 <div>
                     <h1 class="font-bold text-lg">Total</h1>
-                    <p class="text-gray-500">{{ $carts_count }} {{ Str::plural('game', $carts_count) }}</p>
+                    <p class="text-gray-500">{{ $cartsCount }} {{ Str::plural('game', $cartsCount) }}</p>
                 </div>
                 <div>
-                    <h1 class="font-medium text-lg text-gray-600">IDR {{ $carts_total }}</h1>
+                    <h1 class="font-medium text-lg text-gray-600">IDR {{ $cartsTotal }}</h1>
                 </div>
             </div>
         </div>

@@ -1,15 +1,15 @@
 @props(['game' => $game, 'cartId' => $cartId])
 
 @php
-$image = $game['image'];
-$title = $game['title'];
+$image = $game->image;
+$title = $game->title;
 $cat = $game->category->name;
-$price = $game['price'] == 0 ? 'FREE' : 'IDR ' . $game['price'] * 1000;
+$price = $game->price == 0 ? 'FREE' : "IDR {$game->price}";
 @endphp
 
 <div class="flex items-center justify-between h-full mb-2">
     <div class="flex max-w-fit">
-        <img src="{{ asset('/assets/games/' . $image . '/thumb.jpg') }}" class="rounded-lg h-24">
+        <img src="{{ asset("/assets/games/{$image}/thumb.jpg") }}" class="rounded-lg h-24">
         <div class="m-5 self-center">
             <h1 class="font-medium text-xl">{{ $title }} </h1>
             <p class="text-gray-500">{{ $cat }}</p>

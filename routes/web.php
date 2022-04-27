@@ -28,6 +28,8 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 Route::get('/games/{game}', [GameController::class, 'index'])->name('game');
+Route::post('/games/{game}/review', [GameController::class, 'store'])->name('review');
+
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

@@ -75,39 +75,49 @@ $currReviews = $game
     </div>
 
     <div class="m-auto flex w-3/4 gap-3 mb-5">
-        @foreach ($relatedGames as $game)
+        @foreach ($relatedGames as $item)
             <div class="">
-                <img src="{{ asset('/assets/games/' . $game->image . '/thumb.jpg') }}">
+                <img src="{{ asset('/assets/games/' . $item->image . '/thumb.jpg') }}">
                 <p class="text-right">
-                    {{ $game->price == 0 ? 'FREE' : 'IDR ' . $game->price * 1000 }}
+                    {{ $item->price == 0 ? 'FREE' : 'IDR ' . $item->price * 1000 }}
                 </p>
             </div>
         @endforeach
 
     </div>
 
-    <div class="m-auto w-3/4 bg-white p-5 rounded-md mb-5">
-        <h1 class="text-xl font-bold mb-3">Leave a Review!</h1>
-        <form action="" method="post">
-            @csrf
-            <div class="mb-3">
-                <input type="radio" name="recommend" id="recommended">
-                <label for="recommended" class="mr-5">Recommended</label>
-                <input type="radio" name="recommend" id="not_recommended">
-                <label for="not_recommended">Not Recommended</label>
-            </div>
-            <textarea name="review" id="review" rows="10" class="border-black border-2 w-full mb-2"></textarea>
-            <button type="submit"
-                class="rounded-md bg-slate-800 text-white text-sm px-5 py-2 font-semibold hover:bg-slate-900">POST</button>
-        </form>
-    </div>
+    @auth
+        <div class="m-auto w-3/4 bg-white p-5 rounded-md mb-5">
+            <h1 class="text-xl font-bold mb-3">Leave a Review!</h1>
+            <form action="{{ route('review', $game) }}" method="post">
+                @csrf
+                <div class="mb-1">
+                    <input type="radio" name="recommend" id="recommended" value="positive">
+                    <label for="recommended" class="mr-5">Recommended</label>
+                    <input type="radio" name="recommend" id="not_recommended" value="negative">
+                    <label for="not_recommended">Not Recommended</label>
+                </div>
+                @error('recommend')
+                    <p class="text-red-500 text-sm mb-3">{{ $message }}</p>
+                @enderror
+                <textarea name="review" id="review" rows="10" class="border-black border-2 w-full"></textarea>
+                @error('review')
+                    <p class="text-red-500 text-sm mb-2">{{ $message }}</p>
+                @enderror
+                <button type="submit"
+                    class="rounded-md bg-slate-800 text-white text-sm px-5 py-2 font-semibold hover:bg-slate-900">POST</button>
+            </form>
+        </div>
+    @endauth
 
     <div class="m-auto w-3/4 mb-3">
+        <h1 class="text-gray-600 text-lg w-3/4 mb-2">Users Reviews</h1>
         <div class="flex justify-start w-full gap-3">
             @foreach ($currReviews as $review)
                 <div class="bg-white w-1/3 rounded-md p-3">
                     <h1 class="font-semibold">{{ $review->user->name }}</h1>
-                    <p class="text-gray-500 text-sm my-2">{{ $review->recommend == 1 ? 'Recommended' : 'Not Recommended' }}
+                    <p class="text-gray-500 text-sm my-2">
+                        {{ $review->recommend == 1 ? 'Recommended' : 'Not Recommended' }}
                     </p>
                     <p>{{ Str::limit($review->review, 100, $end = '...') }}</p>
                 </div>

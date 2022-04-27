@@ -9,16 +9,16 @@
 
         <h1 class="font-bold text-2xl mb-4">Featured Games</h1>
         <div class="container flex gap-5 mb-8">
-            @for ($i = 0; $i < 5; $i++)
-                <x-game-card-square :game="$games[$i]"></x-game-card-square>
-            @endfor
+            @foreach ($featuredGames as $game)
+                <x-game-card-square :game="$game"></x-game-card-square>
+            @endforeach
         </div>
 
         <h1 class="font-bold text-2xl mb-4">Hot Games</h1>
         <div class="container flex flex-col gap-4">
-            @for ($i = 0; $i < 8; $i++)
-                <x-game-card-rect :game="$games[$i]"></x-game-card-rect>
-            @endfor
+            @foreach ($hotGames as $game)
+                <x-game-card-rect :game="$game"></x-game-card-rect>
+            @endforeach
         </div>
     </div>
 @endsection

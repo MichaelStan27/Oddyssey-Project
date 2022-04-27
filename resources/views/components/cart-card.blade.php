@@ -1,4 +1,4 @@
-@props(['game' => $game])
+@props(['game' => $game, 'cartId' => $cartId])
 
 @php
 $image = $game['image'];
@@ -17,8 +17,11 @@ $price = $game['price'] == 0 ? 'FREE' : 'IDR ' . $game['price'] * 1000;
     </div>
     <div class="text-right mr-4">
         <p class="font-semibold text-lg text-gray-600 mb-1">{{ $price }}</p>
-        <form action="">
-            <button class="rounded-md text-white font-medium bg-red-500 py-2 px-4">REMOVE</button>
+        <form action="{{ route('cart') }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <input type="hidden" name="cartId" value="{{ $cartId }}">
+            <button type="submit" class="rounded-md text-white font-medium bg-red-500 py-2 px-4">REMOVE</button>
         </form>
     </div>
 </div>

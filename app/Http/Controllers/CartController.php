@@ -22,4 +22,14 @@ class CartController extends Controller {
             'carts_total' => $carts_total
         ]);
     }
+
+    public function destroy(Request $request) {
+        $user = Auth::user();
+
+        if (!$user->carts()->find($request->cartId)->delete()) {
+            response('Invalid request, cart id not found', 404);
+        }
+
+        return redirect()->back();
+    }
 }

@@ -33,5 +33,6 @@ Route::get('/games/{game}', [GameController::class, 'index'])->name('game');
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::delete('/cart', [CartController::class, 'destroy']);
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

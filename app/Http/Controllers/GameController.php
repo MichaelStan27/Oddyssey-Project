@@ -19,11 +19,15 @@ class GameController extends Controller {
             'review' => ['required']
         ]);
 
-        $game->reviews()->create([
-            'user_id' => Auth::user()->id,
-            'review' => $request->review,
-            'recommend' => $request->recommend == 'positive' ? true : false
-        ]);
+        $user = Auth::user();
+
+        if (!$user->reviews->where('game_id', $game->id)) {
+            $game->reviews()->create([
+                'user_id' => $user->id,
+                'review' => $request->review,
+                'recommend' => $request->recommend == 'positive' ? true : false
+            ]);
+        }
 
         return redirect()->back();
     }

@@ -11,5 +11,6 @@ This project was made to fulfill the requirements of the web programming lab's f
 ### Setup
 1. Clone this repository (`git clone https://github.com/MichaelStan27/Oddyssey-Project`)
 2. Install all project dependencies (`npm install && composer install`)
-3. Build project assets (`npm run dev`)
-4. Preview project (`php artisan serve`)
+3. Configure `.env` file
+4. Build project assets (`npm run dev`)
+5. Preview project (`php artisan serve`)

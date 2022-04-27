@@ -34,6 +34,7 @@ Route::post('/games/{game}/review', [GameController::class, 'store'])->name('rev
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::post('/cart', [CartController::class, 'store']);
 Route::delete('/cart', [CartController::class, 'destroy']);
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

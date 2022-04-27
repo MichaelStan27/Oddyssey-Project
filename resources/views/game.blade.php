@@ -35,8 +35,9 @@ $currReviews = $game->reviews()->get();
                 <h1 class="text-lg font-semibold m-2">{{ $title }}</h1>
                 <p class="text-sm m-2">{{ $desc }}</p>
                 <p class="text-lg font-semibold mb-1 m-2 absolute bottom-10">{{ $price }}</p>
-                <form action="" method="post" class=" m-2 absolute bottom-0">
+                <form action="{{ route('cart') }}" method="post" class=" m-2 absolute bottom-0">
                     @csrf
+                    <input type="hidden" name="gameId" value="{{ $id }}">
                     <button type="submit"
                         class="rounded-md bg-slate-800 text-white text-sm p-2 font-semibold hover:bg-slate-900">ADD TO
                         CART</button>

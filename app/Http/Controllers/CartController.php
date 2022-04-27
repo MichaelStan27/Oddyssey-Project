@@ -23,6 +23,15 @@ class CartController extends Controller {
         ]);
     }
 
+    public function store(Request $request) {
+
+        Auth::user()->carts()->firstOrCreate([
+            'game_id' => $request->gameId
+        ]);
+
+        return redirect()->back();
+    }
+
     public function destroy(Request $request) {
         $user = Auth::user();
 

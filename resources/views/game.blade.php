@@ -19,10 +19,7 @@ $relatedGames = $game->category
     ->whereNotIn('id', [$id])
     ->get();
 
-$currReviews = $game
-    ->reviews()
-    ->limit(3)
-    ->get();
+$currReviews = $game->reviews()->get();
 
 @endphp
 
@@ -112,16 +109,16 @@ $currReviews = $game
 
     <div class="m-auto w-3/4 mb-3">
         <h1 class="text-gray-600 text-lg w-3/4 mb-2">Users Reviews</h1>
-        <div class="flex justify-start w-full gap-3">
-            @foreach ($currReviews as $review)
-                <div class="bg-white w-1/3 rounded-md p-3">
-                    <h1 class="font-semibold">{{ $review->user->name }}</h1>
-                    <p class="text-gray-500 text-sm my-2">
-                        {{ $review->recommend == 1 ? 'Recommended' : 'Not Recommended' }}
-                    </p>
-                    <p>{{ Str::limit($review->review, 100, $end = '...') }}</p>
-                </div>
-            @endforeach
-        </div>
+        @foreach ($currReviews as $review)
+            <div class="bg-white w-full rounded-md p-3 mb-3 relative">
+                <h1 class="font-semibold">{{ $review->user->name }}</h1>
+                <p class="absolute top-2 right-3 text-sm text-gray-500">
+                    {{ date('d M, Y  h:m A', strtotime($review->created_at)) }}</p>
+                <p class="text-gray-500 text-sm my-2">
+                    {{ $review->recommend == 1 ? 'Recommended' : 'Not Recommended' }}
+                </p>
+                <p>{{ $review->review }}</p>
+            </div>
+        @endforeach
     </div>
 @endsection

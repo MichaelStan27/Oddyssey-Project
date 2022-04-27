@@ -20,8 +20,7 @@ class GameController extends Controller {
         ]);
 
         $user = Auth::user();
-
-        if (!$user->reviews->where('game_id', $game->id)) {
+        if (!$user->reviews->where('game_id', $game->id)->count()) {
             $game->reviews()->create([
                 'user_id' => $user->id,
                 'review' => $request->review,

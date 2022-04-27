@@ -3,8 +3,8 @@
         <li class="px-4 tab-active">
             <a href="/" class="px-2 block my-4">Dashboard</a>
         </li class="px-4">
-        <li class="px-4"><a href="" class="px-2 block my-4">Cart</a></li>
         @auth
+            <li class="px-4"><a href="{{ route('cart') }}" class="px-2 block my-4">Cart</a></li>
             <li class="px-4"><a href="" class="px-2 block my-4">Admin</a></li>
         @endauth
     </ul>

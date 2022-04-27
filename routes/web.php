@@ -27,7 +27,7 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::get('/game-detail', [GameController::class, 'index'])->name('game');
+Route::get('/game-detail/{game}', [GameController::class, 'index'])->name('game');
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

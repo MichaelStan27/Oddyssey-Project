@@ -1,16 +1,30 @@
+@php
+$game->load('category', 'reviews');
+
+$image = $game['image'];
+$title = $game['title'];
+$desc = $game['description'];
+$price = $game['price'] == 0 ? 'FREE' : 'IDR ' . $game['price'] * 1000;
+$date = date('d M, Y', strtotime($game['created_at']));
+
+$category = $game->category->name;
+
+$reviews = $game->reviews->groupBy('recommend')->map->count();
+
+@endphp
+
 @extends('layouts.app')
 
-@section('title', 'Game Detail')
+@section('title', $title)
 
 @section('content')
     <div class="m-auto mb-3 flex justify-between w-3/4">
         <div class="w-[21rem]">
             <div class="bg-white w-full h-full relative">
-                <img src="{{ asset('/assets/games/ELDEN RING/thumb.jpg') }}">
-                <h1 class="text-lg font-semibold m-2">Elden Ring</h1>
-                <p class="text-sm m-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi ea dolorum aperiam
-                    perspiciatis id excepturi qui porro, dolores vel. Delectus, quod! In et explicabo laudantium?</p>
-                <p class="text-lg font-semibold mb-1 m-2 absolute bottom-10">IDR 599.000</p>
+                <img src="{{ asset('/assets/games/' . $image . '/thumb.jpg') }}">
+                <h1 class="text-lg font-semibold m-2">{{ $title }}</h1>
+                <p class="text-sm m-2">{{ Str::limit($desc, 200, $end = '...') }}</p>
+                <p class="text-lg font-semibold mb-1 m-2 absolute bottom-10">{{ $price }}</p>
                 <form action="" method="post" class=" m-2 absolute bottom-0">
                     @csrf
                     <button type="submit"
@@ -19,21 +33,25 @@
                 </form>
             </div>
         </div>
-        <img src="{{ asset('/assets/games/ELDEN RING/img_1.jpg') }}" class="w-[44rem]">
+        <img src="{{ asset('/assets/games/' . $image . '/img_1.jpg') }}" class="w-[44rem]">
     </div>
     <div class="m-auto rounded-md flex justify-around w-3/4 bg-white mb-2">
         <div class="p-2">
             <p class="text-sm text-gray-500">Genre</p>
-            <h1 class="font-semibold text-lg">Action RPG</h1>
+            <h1 class="font-semibold text-lg">{{ $category }}</h1>
         </div>
         <div class="p-2">
             <p class="text-sm text-gray-500">Released Date</p>
-            <h1 class="font-semibold text-lg">12 Apr, 2002</h1>
+            <h1 class="font-semibold text-lg">{{ $date }}</h1>
         </div>
         <div class="p-2">
             <p class="text-sm text-gray-500">All Reviews</p>
-            <h1 class="font-semibold text-lg">1 Recommended</h1>
-            <h1 class="font-semibold text-lg">1 Not Recommended</h1>
+            @forelse ($reviews as $key => $review)
+                <h1 class="font-semibold text-lg">
+                    {{ $key == 1 ? $review . ' Recommended' : $review . ' Not Recommended' }}</h1>
+            @empty
+                <h1 class="font-semibold text-lg">{{ '0 Review' }}</h1>
+            @endforelse
         </div>
     </div>
 
@@ -82,7 +100,8 @@
             <div class="bg-white w-1/3 rounded-md p-3">
                 <h1 class="font-semibold">Daniel</h1>
                 <p class="text-gray-500 text-sm my-2">Not Recommended</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit, quas ea a cumque accusantium aliquam.</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit, quas ea a cumque accusantium aliquam.
+                </p>
             </div>
         </div>
     </div>

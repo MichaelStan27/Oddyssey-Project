@@ -11,7 +11,7 @@ $price = $game->price == 0 ? 'FREE' : "IDR {$game->price}";
     <div class="flex max-w-fit">
         <img src="{{ asset("/assets/games/{$image}/thumb.jpg") }}" class="rounded-lg h-24">
         <div class="m-5 self-center">
-            <h1 class="font-medium text-xl">{{ $title }} </h1>
+            <a href="{{ route('game', $game) }}" class="font-medium text-xl">{{ $title }} </a>
             <p class="text-gray-500">{{ $cat }}</p>
         </div>
     </div>

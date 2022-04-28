@@ -73,14 +73,11 @@ $currReviews = $game
     </div>
 
     <div class="m-auto flex w-3/4 gap-3 mb-5">
-        @foreach ($relatedGames as $item)
-            <div class="">
-                <img src="{{ asset("/assets/games/{$item->image}/thumb.jpg") }}">
-                <p class="text-right">
-                    {{ $item->price == 0 ? 'FREE' : "IDR {$item->price}" }}
-                </p>
-            </div>
-        @endforeach
+        @forelse ($relatedGames as $item)
+            <x-related-game-card :game="$item"></x-related-game-card>
+        @empty
+            <p class="text-xl font-semibold text-gray-500 mt-3">No Related Games Available</p>
+        @endforelse
 
     </div>
 

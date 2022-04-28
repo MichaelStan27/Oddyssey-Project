@@ -11,4 +11,12 @@ class ManageGameController extends Controller {
             'games' => Game::paginate(10)
         ]);
     }
+
+    public function update(Game $game) {
+        dd($game);
+    }
+
+    public function destroy(Game $game) {
+        dd($game);
+    }
 }

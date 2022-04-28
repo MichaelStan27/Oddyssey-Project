@@ -46,6 +46,6 @@ Route::delete('/cart', [CartController::class, 'destroy']);
 
 Route::get('/add-game', [AddGameController::class, 'index'])->name('add-game');
 
-Route::get('/update-game', [UpdateGameController::class, 'index'])->name('update-game');
+Route::post('/update-game/{game}', [UpdateGameController::class, 'store'])->name('update-game');
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

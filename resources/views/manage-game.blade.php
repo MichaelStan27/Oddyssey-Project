@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container mx-auto mb-20 flex flex-col items-center gap-2">
-        <a href="/add-game" class="my-5">
+        <a href="{{ route('add-game') }}" class="my-5">
             <button class="rounded-md bg-gray-700 text-white font-medium py-2 px-4">
                 ADD NEW GAME
             </button>
@@ -16,9 +16,8 @@
                     <div>
                         <p class="text-right mb-2">{{ $game->price == 0 ? 'FREE' : "IDR {$game->price}" }}</p>
                         <div class="flex gap-3 text-white">
-                            <form action="{{ route('manage-game.update', $game) }}" method="POST">
+                            <form action="{{ route('update-game', $game) }}" method="POST">
                                 @csrf
-                                @method('PUT')
                                 <button type="submit" class="py-2 px-6 bg-gray-700 rounded-md font-medium">
                                     UPDATE
                                 </button>

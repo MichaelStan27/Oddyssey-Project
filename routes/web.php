@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ManageGameController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,8 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 Route::get('/games/{game}', [GameController::class, 'index'])->name('game');
 Route::post('/games/{game}/review', [GameController::class, 'store'])->name('review');
+
+Route::get('/manage-game', [ManageGameController::class, 'index'])->name('manage-game');
 
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 

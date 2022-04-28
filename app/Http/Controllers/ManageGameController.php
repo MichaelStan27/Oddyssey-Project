@@ -17,6 +17,11 @@ class ManageGameController extends Controller {
     }
 
     public function destroy(Game $game) {
-        dd($game);
+
+        // AUTHORIZATION
+
+        $game->delete();
+
+        return redirect()->back();
     }
 }

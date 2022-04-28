@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Add Game')
+@section('title', 'Update Game')
 
 @section('content')
     <div class="container mx-auto mb-20">

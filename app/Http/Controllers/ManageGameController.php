@@ -12,6 +12,30 @@ class ManageGameController extends Controller {
         ]);
     }
 
+    public function store(Request $request) {
+
+        // AUTHORIZATION
+
+        $request->validate(
+            [
+                'title' => ['required'],
+                'category' => ['required', 'exists:categories,name'],
+                'price' => ['required', 'numeric'],
+                'thumbnail' => ['required', 'mimes:jpg,svg,png'],
+                'slider' => ['min:3'],
+                'slider.*' => ['required', 'mimes:jpg,jpeg,svg,png'],
+                'desc' => ['required', 'min:10'],
+            ],
+            [
+                'slider.min' => 'The slider must be at least 3 images',
+            ]
+        );
+
+        dd($request);
+
+        return redirect()->route('manage-game');
+    }
+
     public function update(Game $game) {
         dd($game);
     }

@@ -35,6 +35,7 @@ Route::get('/games/{game}', [GameController::class, 'index'])->name('game');
 Route::post('/games/{game}/review', [GameController::class, 'store'])->name('review');
 
 Route::get('/manage-game', [ManageGameController::class, 'index'])->name('manage-game');
+Route::post('/manage-game', [ManageGameController::class, 'store'])->name('manage-game.create');
 Route::put('/manage-game/{game}', [ManageGameController::class, 'update'])->name('manage-game.update');
 Route::delete('/manage-game/{game}', [ManageGameController::class, 'destroy'])->name('manage-game.delete');
 

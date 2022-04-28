@@ -1,4 +1,4 @@
-@props(['game' => $game, 'cartId' => $cartId])
+@props(['game' => $game, 'gameId' => $gameId])
 
 @php
 $image = $game->image;
@@ -20,7 +20,7 @@ $price = $game->price == 0 ? 'FREE' : "IDR {$game->price}";
         <form action="{{ route('cart') }}" method="POST">
             @csrf
             @method('DELETE')
-            <input type="hidden" name="cartId" value="{{ $cartId }}">
+            <input type="hidden" name="gameId" value="{{ $gameId }}">
             <button type="submit" class="rounded-md text-white font-medium bg-red-500 py-2 px-4">REMOVE</button>
         </form>
     </div>

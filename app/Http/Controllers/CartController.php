@@ -36,9 +36,7 @@ class CartController extends Controller {
     public function destroy(Request $request) {
         $user = Auth::user();
 
-        if (!$user->carts()->find($request->cartId)->delete()) {
-            response('Invalid request, cart id not found', 404);
-        }
+        $user->carts()->where('game_id', $request->gameId)->firstOrFail()->delete();
 
         return redirect()->back();
     }

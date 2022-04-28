@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\UpdateGameController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,5 +40,7 @@ Route::post('/cart', [CartController::class, 'store']);
 Route::delete('/cart', [CartController::class, 'destroy']);
 
 Route::get('/add-game', [AddGameController::class, 'index'])->name('add-game');
+
+Route::get('/update-game', [UpdateGameController::class, 'index'])->name('update-game');
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

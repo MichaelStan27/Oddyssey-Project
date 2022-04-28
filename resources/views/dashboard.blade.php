@@ -17,7 +17,13 @@
         <h1 class="font-bold text-2xl mb-4">Hot Games</h1>
         <div class="container flex flex-col gap-4">
             @foreach ($hotGames as $game)
-                <x-game-card-rect :game="$game"></x-game-card-rect>
+                <a href="{{ route('game', $game) }}" class="block">
+                    <x-game-card-rect :game="$game">
+                        <p class="text-lg">
+                            {{ $game->price == 0 ? 'FREE' : "IDR {$game->price}" }}
+                        </p>
+                    </x-game-card-rect>
+                </a>
             @endforeach
         </div>
     </div>

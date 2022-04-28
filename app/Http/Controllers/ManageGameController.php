@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Game;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ManageGameController extends Controller {
     public function index() {
@@ -31,7 +33,30 @@ class ManageGameController extends Controller {
             ]
         );
 
-        dd($request);
+        // Get category id from it's name
+        $categoryId = Category::where('name', $request->category)->value('id');
+
+        // For image column in db
+        $salt = Str::random(10);
+        $imageDir = "{$request->title}_{$salt}";
+
+        // Saving data to database
+        Game::create([
+            'title' => $request->title,
+            'category_id' => $categoryId,
+            'description' => $request->desc,
+            'price' => $request->price,
+            'image' => $imageDir
+        ]);
+
+        // Moving thumbnail
+        $request->thumbnail->move(public_path("assets/games/{$imageDir}"), "thumb.jpg");
+
+        // Moving slider image
+        foreach ($request->slider as $idx => $img) {
+            $num = $idx + 1;
+            $img->move(public_path("assets/games/{$imageDir}"), "img_{$num}.jpg");
+        }
 
         return redirect()->route('manage-game');
     }

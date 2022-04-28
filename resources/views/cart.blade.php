@@ -9,7 +9,7 @@
         <div class="bg-white p-2 rounded-lg divide-gray-200 divide-y">
             <div class="mb-5">
                 @forelse ($carts as $cartItem)
-                    <x-cart-card :game="$cartItem->game" :cartId="$cartItem->id"></x-cart-card>
+                    <x-cart-card :game="$cartItem" :cartId="$cartItem->id"></x-cart-card>
                 @empty
                     <h1 class="text-xl text-gray-600 m-6">Cart is empty</h1>
                 @endforelse

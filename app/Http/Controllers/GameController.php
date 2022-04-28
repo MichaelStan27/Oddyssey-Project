@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class GameController extends Controller {
     public function index(Game $game) {
-        return view('game')->with('game', $game);
+        return view('game')->with('game', $game->load('category', 'reviews'));
     }
 
     public function store(Request $request, Game $game) {

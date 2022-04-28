@@ -1,7 +1,4 @@
 @php
-$game->load('category', 'reviews');
-$game->reviews->load('user');
-
 $id = $game->id;
 $image = $game->image;
 $title = $game->title;
@@ -19,7 +16,10 @@ $relatedGames = $game->category
     ->whereNotIn('id', [$id])
     ->get();
 
-$currReviews = $game->reviews()->get();
+$currReviews = $game
+    ->reviews()
+    ->with('user')
+    ->get();
 
 @endphp
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +14,7 @@ class CartController extends Controller {
 
     public function index() {
         $user = Auth::user();
-        $carts = $user->carts()->with('game')->get();
+        $carts = Game::with('category')->whereIn('id', $user->carts()->pluck('game_id'))->get();
         $cartsTotal = $user->carts()->join('games', 'carts.game_id', '=', 'games.id')->sum('price');
 
         return view('cart', [

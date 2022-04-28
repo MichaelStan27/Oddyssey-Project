@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddGameController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GameController;
@@ -36,5 +37,7 @@ Route::get('/search', [SearchController::class, 'index'])->name('search');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart', [CartController::class, 'store']);
 Route::delete('/cart', [CartController::class, 'destroy']);
+
+Route::get('/add-game', [AddGameController::class, 'index'])->name('add-game');
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

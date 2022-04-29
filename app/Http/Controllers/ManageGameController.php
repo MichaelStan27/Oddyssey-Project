@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Game;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Category;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ManageGameController extends Controller {
     public function index() {
@@ -111,6 +111,7 @@ class ManageGameController extends Controller {
     public function destroy(Game $game) {
 
         // AUTHORIZATION
+        File::deleteDirectory(public_path("assets/games/{$game->image}/"));
         $game->reviews()->delete();
         $game->delete();
 

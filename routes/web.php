@@ -42,15 +42,17 @@ Route::post('/manage-game', [ManageGameController::class, 'store'])->name('manag
 Route::put('/manage-game/{game}', [ManageGameController::class, 'update'])->name('manage-game.update');
 Route::delete('/manage-game/{game}', [ManageGameController::class, 'destroy'])->name('manage-game.delete');
 
+Route::get('/add-game', [AddGameController::class, 'index'])->name('add-game');
+Route::get('/update-game/{game}', [UpdateGameController::class, 'index'])->name('update-game');
+Route::post('/update-game/{game}', [UpdateGameController::class, 'index']);
+
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart', [CartController::class, 'store']);
 Route::delete('/cart', [CartController::class, 'destroy']);
 
-Route::get('/add-game', [AddGameController::class, 'index'])->name('add-game');
 
-Route::post('/update-game/{game}', [UpdateGameController::class, 'store'])->name('update-game');
 
 Route::get('/manage-category', [ManageCategoryController::class, 'index'])->name('manage-category');
 Route::post('/manage-category', [ManageCategoryController::class, 'store'])->name('manage-category.create');
@@ -58,6 +60,7 @@ Route::put('/manage-category/{category}', [ManageCategoryController::class, 'upd
 Route::delete('/manage-category/{category}', [ManageCategoryController::class, 'delete'])->name('manage-category.delete');
 
 Route::get('/add-category', [AddCategoryController::class, 'index'])->name('add-category');
-Route::post('/update-category/{category}', [UpdateCategoryController::class, 'index'])->name('update-category');
+Route::get('/update-category/{category}', [UpdateCategoryController::class, 'index'])->name('update-category');
+Route::post('/update-category/{category}', [UpdateCategoryController::class, 'index']);
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

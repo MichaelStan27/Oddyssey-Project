@@ -24,8 +24,16 @@ class ManageCategoryController extends Controller {
         return redirect()->route('manage-category');
     }
 
-    public function update(Category $category) {
-        dd($category);
+    public function update(Category $category, Request $request) {
+        $request->validate([
+            'category' => ['required', 'unique:categories,name'],
+        ]);
+
+        $category->update([
+            'name' => $request->category
+        ]);
+
+        return redirect()->route('manage-category');
     }
 
     public function delete(Category $category) {

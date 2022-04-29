@@ -6,10 +6,12 @@
     <div class="container mx-auto mb-20">
         <div class="m-auto w-1/2 bg-white rounded-md p-5">
             <h1 class="text-center text-lg font-semibold mb-3">Update Category</h1>
-            <form action="" method="post">
+            <form action="{{ route('manage-category.update', $category) }}" method="post">
                 @csrf
+                @method('PUT')
                 <div class="mb-5">
                     <input type="text" name="category" id="category" placeholder="Update Category"
+                        value="{{ $category->name }}"
                         class="rounded-md w-full p-2 bg-gray-100 border-2 outline-purple-300 @error('category') border-red-500 @enderror">
                     @error('category')
                         <p class="text-red-500 text-sm">{{ $message }}</p>

@@ -52,8 +52,6 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart', [CartController::class, 'store']);
 Route::delete('/cart', [CartController::class, 'destroy']);
 
-
-
 Route::get('/manage-category', [ManageCategoryController::class, 'index'])->name('manage-category');
 Route::post('/manage-category', [ManageCategoryController::class, 'store'])->name('manage-category.create');
 Route::put('/manage-category/{category}', [ManageCategoryController::class, 'update'])->name('manage-category.update');

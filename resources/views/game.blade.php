@@ -1,11 +1,4 @@
 @php
-$id = $game->id;
-$image = $game->image;
-$title = $game->title;
-$desc = Str::limit($game->description, 200, $end = '...');
-$price = $game->price == 0 ? 'FREE' : "IDR {$game->price}";
-$date = date('d M, Y', strtotime($game->created_at));
-
 $category = $game->category->name;
 
 $reviews = $game->reviews->groupBy('recommend')->map->count();
@@ -20,7 +13,6 @@ $currReviews = $game
     ->reviews()
     ->with('user')
     ->get();
-
 @endphp
 
 @extends('layouts.app')

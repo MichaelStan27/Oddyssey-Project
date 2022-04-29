@@ -1,58 +1,42 @@
-@php
-$category = $game->category->name;
-
-$reviews = $game->reviews->groupBy('recommend')->map->count();
-
-$relatedGames = $game->category
-    ->games()
-    ->limit(3)
-    ->whereNotIn('id', [$id])
-    ->get();
-
-$currReviews = $game
-    ->reviews()
-    ->with('user')
-    ->get();
-@endphp
-
 @extends('layouts.app')
 
-@section('title', $title)
+@section('title', $gameData['title'])
 
 @section('content')
     <div class="m-auto mb-3 flex justify-between w-3/4">
         <div class="w-[21rem]">
             <div class="bg-white w-full h-full relative">
-                <img src="{{ asset("/assets/games/{$image}/thumb.jpg") }}">
-                <h1 class="text-lg font-semibold m-2">{{ $title }}</h1>
-                <p class="text-sm m-2">{{ $desc }}</p>
-                <p class="text-lg font-semibold mb-1 m-2 absolute bottom-10">{{ $price }}</p>
+                <img src="{{ asset("/assets/games/{$gameData['image']}/thumb.jpg") }}">
+                <h1 class="text-lg font-semibold m-2">{{ $gameData['title'] }}</h1>
+                <p class="text-sm m-2">{{ $gameData['desc'] }}</p>
+                <p class="text-lg font-semibold mb-1 m-2 absolute bottom-10">{{ $gameData['price'] }}</p>
                 <form action="{{ route('cart') }}" method="post" class=" m-2 absolute bottom-0">
                     @csrf
-                    <input type="hidden" name="gameId" value="{{ $id }}">
+                    <input type="hidden" name="gameId" value="{{ $gameData['id'] }}">
                     <button type="submit"
-                        class="rounded-md bg-slate-800 text-white text-sm p-2 font-semibold hover:bg-slate-900">ADD TO
-                        CART</button>
+                        class="rounded-md bg-slate-800 text-white text-sm p-2 font-semibold hover:bg-slate-900">
+                        ADD TO CART
+                    </button>
                 </form>
             </div>
         </div>
-        <img src="{{ asset("/assets/games/{$image}/img_1.jpg") }}" class="w-[44rem]">
+        <img src="{{ asset("/assets/games/{$gameData['image']}/img_1.jpg") }}" class="w-[44rem]">
     </div>
     <div class="m-auto rounded-md flex justify-around w-3/4 bg-white mb-2">
         <div class="p-2">
             <p class="text-sm text-gray-500">Genre</p>
-            <h1 class="font-semibold text-lg">{{ $category }}</h1>
+            <h1 class="font-semibold text-lg">{{ $gameData['category'] }}</h1>
         </div>
         <div class="p-2">
             <p class="text-sm text-gray-500">Released Date</p>
-            <h1 class="font-semibold text-lg">{{ $date }}</h1>
+            <h1 class="font-semibold text-lg">{{ $gameData['date'] }}</h1>
         </div>
         <div class="p-2">
             <p class="text-sm text-gray-500">All Reviews</p>
-            @forelse ($reviews as $key => $review)
+            @forelse ($reviews as $reviewType => $review)
                 <h1 class="font-semibold text-lg">
                     {{ $review }}
-                    {{ $key === 1 ? 'Recommended' : 'Not Recommended' }}
+                    {{ $reviewType === 1 ? 'Recommended' : 'Not Recommended' }}
                 </h1>
             @empty
                 <h1 class="font-semibold text-lg">0 Review</h1>

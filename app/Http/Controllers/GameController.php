@@ -10,22 +10,38 @@ use Illuminate\Support\Facades\Auth;
 
 class GameController extends Controller {
     public function index(Game $game) {
-        $id = $game->id;
-        $image = $game->image;
-        $title = $game->title;
-        $desc = Str::limit($game->description, 200, $end = '...');
-        $price = $game->price == 0 ? 'FREE' : "IDR {$game->price}";
-        $date = date('d M, Y', strtotime($game->created_at));
+
+        // Lazy eager load
+        $game = $game->load('category', 'reviews');
+
+        $reviews = $game->reviews->groupBy('recommend')->map->count();
+
+        $relatedGames = $game->category
+            ->games()
+            ->limit(3)
+            ->whereNotIn('id', [$game->id])
+            ->get();
+
+        $currReviews = $game
+            ->reviews()
+            ->with('user')
+            ->get();
 
         return view('game', [
-            'id' => $id,
-            'image' => $image,
-            'title' => $title,
-            'desc' => $desc,
-            'price' => $price,
-            'date' => $date,
-
-        ])->with('game', $game->load('category', 'reviews'));
+            'game' => $game,
+            'gameData' => [
+                'id' => $game->id,
+                'image' => $game->image,
+                'title' => $game->title,
+                'desc' => Str::limit($game->description, 200, $end = '...'),
+                'price' => $game->price == 0 ? 'FREE' : "IDR {$game->price}",
+                'date' => date('d M, Y', strtotime($game->created_at)),
+                'category' => $game->category->name
+            ],
+            'reviews' => $reviews,
+            'relatedGames' => $relatedGames,
+            'currReviews' => $currReviews,
+        ]);
     }
 
     public function store(Request $request, Game $game) {

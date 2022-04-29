@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Game;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ManageGameController extends Controller {
@@ -110,9 +111,9 @@ class ManageGameController extends Controller {
     public function destroy(Game $game) {
 
         // AUTHORIZATION
-
+        $game->reviews()->delete();
         $game->delete();
 
-        return redirect()->back();
+        return redirect()->route('manage-game');
     }
 }

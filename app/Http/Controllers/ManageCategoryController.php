@@ -39,8 +39,9 @@ class ManageCategoryController extends Controller {
     public function delete(Category $category) {
         //AUTHORIZATION
 
+        $category->games()->delete();
         $category->delete();
 
-        return redirect()->back();
+        return redirect()->route('manage-category');
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Add Category')
+@section('title', 'Update Category')
 
 @section('content')
     <div class="container mx-auto mb-20">

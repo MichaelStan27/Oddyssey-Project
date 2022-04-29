@@ -21,7 +21,7 @@
                     Manage game
                 </button>
             </a>
-            <a href="">
+            <a href="{{ route('manage-category') }}">
                 <button class="text-gray-700 text-left block px-4 py-2 w-40 hover:bg-gray-200 font-normal text-base">
                     Manage category
                 </button>

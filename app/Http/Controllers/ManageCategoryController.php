@@ -12,6 +12,18 @@ class ManageCategoryController extends Controller {
         ]);
     }
 
+    public function store(Request $request) {
+        $request->validate([
+            'category' => ['required', 'unique:categories,name'],
+        ]);
+
+        Category::create([
+            'name' => $request->category
+        ]);
+
+        return redirect()->route('manage-category');
+    }
+
     public function update(Category $category) {
         dd($category);
     }

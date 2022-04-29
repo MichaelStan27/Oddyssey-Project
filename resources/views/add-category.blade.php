@@ -6,7 +6,7 @@
     <div class="container mx-auto mb-20">
         <div class="m-auto w-1/2 bg-white rounded-md p-5">
             <h1 class="text-center text-lg font-semibold mb-3">Add Category</h1>
-            <form action="" method="post">
+            <form action="{{ route('manage-category.create') }}" method="post">
                 @csrf
                 <div class="mb-5">
                     <input type="text" name="category" id="category" placeholder="Add Category"

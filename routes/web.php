@@ -53,6 +53,7 @@ Route::get('/add-game', [AddGameController::class, 'index'])->name('add-game');
 Route::post('/update-game/{game}', [UpdateGameController::class, 'store'])->name('update-game');
 
 Route::get('/manage-category', [ManageCategoryController::class, 'index'])->name('manage-category');
+Route::post('/manage-category', [ManageCategoryController::class, 'store'])->name('manage-category.create');
 Route::put('/manage-category/{category}', [ManageCategoryController::class, 'update'])->name('manage-category.update');
 Route::delete('/manage-category/{category}', [ManageCategoryController::class, 'delete'])->name('manage-category.delete');
 

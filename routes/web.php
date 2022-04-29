@@ -1,14 +1,17 @@
 <?php
 
+use App\Http\Controllers\AddCategoryController;
 use App\Http\Controllers\AddGameController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ManageCategoryController;
 use App\Http\Controllers\ManageGameController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\UpdateCategoryController;
 use App\Http\Controllers\UpdateGameController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,5 +51,12 @@ Route::delete('/cart', [CartController::class, 'destroy']);
 Route::get('/add-game', [AddGameController::class, 'index'])->name('add-game');
 
 Route::post('/update-game/{game}', [UpdateGameController::class, 'store'])->name('update-game');
+
+Route::get('/manage-category', [ManageCategoryController::class, 'index'])->name('manage-category');
+Route::put('/manage-category/{category}', [ManageCategoryController::class, 'update'])->name('manage-category.update');
+Route::delete('/manage-category/{category}', [ManageCategoryController::class, 'delete'])->name('manage-category.delete');
+
+Route::get('/add-category', [AddCategoryController::class, 'index'])->name('add-category');
+Route::post('/update-category/{category}', [UpdateCategoryController::class, 'index'])->name('update-category');
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

@@ -1,4 +1,4 @@
-@props(['game' => $game, 'gameId' => $gameId])
+@props(['game', 'gameId'])
 
 @php
 $image = $game->image;

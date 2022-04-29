@@ -1,4 +1,4 @@
-@props(['game' => $game])
+@props(['game'])
 
 <a href="{{ route('game', $game) }}">
     <div class="">

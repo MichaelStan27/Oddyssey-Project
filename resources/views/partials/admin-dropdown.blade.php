@@ -13,7 +13,7 @@
         </button>
     </div>
 
-    <div class="origin-top-right absolute right-0 mt-1 rounded-md shadow-lg bg-white border border-gray-300 hidden"
+    <div class="origin-top-right absolute right-0 mt-1 rounded-md shadow-lg bg-white border border-gray-300 z-50 hidden"
         id="admin-menu">
         <div class="py-1">
             <a href="{{ route('manage-game') }}">

@@ -17,6 +17,10 @@ class ManageCategoryController extends Controller {
     }
 
     public function delete(Category $category) {
-        dd($category);
+        //AUTHORIZATION
+
+        $category->delete();
+
+        return redirect()->back();
     }
 }

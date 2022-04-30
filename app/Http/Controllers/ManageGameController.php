@@ -46,6 +46,7 @@ class ManageGameController extends Controller {
             'title' => $request->title,
             'category_id' => $categoryId,
             'description' => $request->desc,
+            'img_count' => count($request->slider),
             'price' => $request->price,
             'image' => $imageDir
         ]);
@@ -92,6 +93,7 @@ class ManageGameController extends Controller {
             'title' => $request->title,
             'category_id' => $categoryId,
             'description' => $request->desc,
+            'img_count' => count($request->slider),
             'price' => $request->price,
             'image' => $imageDir
         ]);

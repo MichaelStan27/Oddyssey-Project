@@ -26,39 +26,60 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'store']);
+// Unauthenticate user only
+Route::group(['middleware' => 'guest'], function () {
+    Route::controller(RegisterController::class)->name('register')->group(function () {
+        Route::get('/register', 'index');
+        Route::post('/register', 'store');
+    });
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'store']);
+    Route::controller(LoginController::class)->name('login')->group(function () {
+        Route::get('/login', 'index');
+        Route::post('/login', 'store');
+    });
+});
 
-Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
+// Authenticate user only
+Route::group(['middleware' => 'auth'], function () {
 
+    Route::controller(CartController::class)->name('cart')->group(function () {
+        Route::get('/cart', 'index');
+        Route::post('/cart', 'store');
+        Route::delete('/cart', 'destroy');
+    });
+
+    Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
+
+    // Admin only
+    Route::group(['middleware' => 'can:admin'], function () {
+        Route::controller(ManageCategoryController::class)->name('manage-category.')->group(function () {
+            Route::get('/manage-category', 'index')->name('view');
+            Route::post('/manage-category', 'store')->name('create');
+            Route::put('/manage-category/{category}', 'update')->name('update');
+            Route::delete('/manage-category/{category}', 'delete')->name('delete');
+        });
+
+        Route::controller(ManageGameController::class)->name('manage-game.')->group(function () {
+            Route::get('/manage-game', 'index')->name('view');
+            Route::post('/manage-game', 'store')->name('create');
+            Route::put('/manage-game/{game}', 'update')->name('update');
+            Route::delete('/manage-game/{game}', 'destroy')->name('delete');
+        });
+
+        Route::get('/add-game', [AddGameController::class, 'index'])->name('add-game');
+        Route::get('/update-game/{game}', [UpdateGameController::class, 'index'])->name('update-game');
+        Route::post('/update-game/{game}', [UpdateGameController::class, 'index']);
+
+        Route::get('/add-category', [AddCategoryController::class, 'index'])->name('add-category');
+        Route::get('/update-category/{category}', [UpdateCategoryController::class, 'index'])->name('update-category');
+        Route::post('/update-category/{category}', [UpdateCategoryController::class, 'index']);
+    });
+});
+
+// All user
 Route::get('/games/{game}', [GameController::class, 'index'])->name('game');
-Route::post('/games/{game}/review', [GameController::class, 'store'])->name('review');
-
-Route::get('/manage-game', [ManageGameController::class, 'index'])->name('manage-game');
-Route::post('/manage-game', [ManageGameController::class, 'store'])->name('manage-game.create');
-Route::put('/manage-game/{game}', [ManageGameController::class, 'update'])->name('manage-game.update');
-Route::delete('/manage-game/{game}', [ManageGameController::class, 'destroy'])->name('manage-game.delete');
-
-Route::get('/add-game', [AddGameController::class, 'index'])->name('add-game');
-Route::get('/update-game/{game}', [UpdateGameController::class, 'index'])->name('update-game');
-Route::post('/update-game/{game}', [UpdateGameController::class, 'index']);
+Route::post('/games/{game}/review', [GameController::class, 'store'])->middleware('auth')->name('review');
 
 Route::get('/search', [SearchController::class, 'index'])->name('search');
-
-Route::get('/cart', [CartController::class, 'index'])->name('cart');
-Route::post('/cart', [CartController::class, 'store']);
-Route::delete('/cart', [CartController::class, 'destroy']);
-
-Route::get('/manage-category', [ManageCategoryController::class, 'index'])->name('manage-category');
-Route::post('/manage-category', [ManageCategoryController::class, 'store'])->name('manage-category.create');
-Route::put('/manage-category/{category}', [ManageCategoryController::class, 'update'])->name('manage-category.update');
-Route::delete('/manage-category/{category}', [ManageCategoryController::class, 'delete'])->name('manage-category.delete');
-
-Route::get('/add-category', [AddCategoryController::class, 'index'])->name('add-category');
-Route::get('/update-category/{category}', [UpdateCategoryController::class, 'index'])->name('update-category');
-Route::post('/update-category/{category}', [UpdateCategoryController::class, 'index']);
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

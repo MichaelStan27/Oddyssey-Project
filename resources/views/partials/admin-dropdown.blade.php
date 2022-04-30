@@ -16,12 +16,12 @@
     <div class="origin-top-right absolute right-0 mt-1 rounded-md shadow-lg bg-white border border-gray-300 z-50 hidden"
         id="admin-menu">
         <div class="py-1">
-            <a href="{{ route('manage-game') }}">
+            <a href="{{ route('manage-game.view') }}">
                 <button class="text-gray-700 text-left block px-4 py-2 w-44 hover:bg-gray-200 font-normal text-base">
                     Manage game
                 </button>
             </a>
-            <a href="{{ route('manage-category') }}">
+            <a href="{{ route('manage-category.view') }}">
                 <button class="text-gray-700 text-left block px-4 py-2 w-44 hover:bg-gray-200 font-normal text-base">
                     Manage category
                 </button>

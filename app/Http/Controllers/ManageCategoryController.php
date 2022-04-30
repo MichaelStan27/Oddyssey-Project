@@ -29,7 +29,7 @@ class ManageCategoryController extends Controller {
             'name' => $request->category
         ]);
 
-        return redirect()->route('manage-category')->with('message', "{$request->category} succesfully added to list category");
+        return redirect()->route('manage-category.view')->with('message', "{$request->category} succesfully added to list category");
     }
 
     public function update(Category $category, Request $request) {
@@ -47,7 +47,7 @@ class ManageCategoryController extends Controller {
             'name' => $request->category
         ]);
 
-        return redirect()->route('manage-category')->with('message', "{$oldName} successfully updated to {$request->category}");
+        return redirect()->route('manage-category.view')->with('message', "{$oldName} successfully updated to {$request->category}");
     }
 
     public function delete(Category $category) {
@@ -59,6 +59,6 @@ class ManageCategoryController extends Controller {
         $category->games()->delete();
         $category->delete();
 
-        return redirect()->route('manage-category')->with('message', "The {$categoryName} category successfully deleted");;
+        return redirect()->route('manage-category.view')->with('message', "The {$categoryName} category successfully deleted");;
     }
 }

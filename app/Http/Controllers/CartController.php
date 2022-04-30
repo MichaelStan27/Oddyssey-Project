@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller {
 
-    public function __construct() {
-        $this->middleware('auth');
-    }
-
     public function index() {
         $user = Auth::user();
         $carts = Game::with('category')->whereIn('id', $user->carts()->pluck('game_id'))->get();

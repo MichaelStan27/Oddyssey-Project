@@ -17,12 +17,12 @@
         id="admin-menu">
         <div class="py-1">
             <a href="{{ route('manage-game') }}">
-                <button class="text-gray-700 text-left block px-4 py-2 w-40 hover:bg-gray-200 font-normal text-base">
+                <button class="text-gray-700 text-left block px-4 py-2 w-44 hover:bg-gray-200 font-normal text-base">
                     Manage game
                 </button>
             </a>
             <a href="{{ route('manage-category') }}">
-                <button class="text-gray-700 text-left block px-4 py-2 w-40 hover:bg-gray-200 font-normal text-base">
+                <button class="text-gray-700 text-left block px-4 py-2 w-44 hover:bg-gray-200 font-normal text-base">
                     Manage category
                 </button>
             </a>

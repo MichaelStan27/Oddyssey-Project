@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder {
         User::create([
             'name' => 'Michael Daniel',
             'email' => 'test@gmail.com',
-            'password' => Hash::make('123')
+            'password' => Hash::make('123'),
+            'is_admin' => true
         ]);
 
         Category::insert([

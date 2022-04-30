@@ -1,6 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    html {
+        font-family: "Inter", sans-serif;
+    }
+}
 
 .tab-active {
     @apply after:content-[''] after:block after:w-full after:h-0.5 after:bg-purple-400;

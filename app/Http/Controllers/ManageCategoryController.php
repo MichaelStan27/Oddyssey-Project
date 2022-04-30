@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ManageCategoryController extends Controller {
     public function index() {
         return view('manage-category', [
-            'categories' => Category::paginate(5)
+            'categories' => Category::paginate(10)
         ]);
     }
 

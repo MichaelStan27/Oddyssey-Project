@@ -1,8 +1,8 @@
 @props(['game'])
 
 <a href="{{ route('game', $game) }}">
-    <div class="">
-        <img src="{{ asset("/assets/games/{$game->image}/thumb.jpg") }}">
+    <div>
+        <img class="shadow-md" src="{{ asset("/assets/games/{$game->image}/thumb.jpg") }}">
         <p class="text-right">
             {{ $game->price == 0 ? 'FREE' : "IDR {$game->price}" }}
         </p>

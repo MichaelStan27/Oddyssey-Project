@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container mx-auto mb-20 w-[65%]">
-        <div class="mb-3 flex gap-3">
+        <div class="mt-10 mb-3 flex gap-3">
             <div class="w-[35%] bg-white shadow-md">
                 <img src="{{ asset("/assets/games/{$gameData['image']}/thumb.jpg") }}">
                 <div class="m-5">

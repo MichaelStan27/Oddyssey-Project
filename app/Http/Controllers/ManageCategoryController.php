@@ -21,7 +21,7 @@ class ManageCategoryController extends Controller {
             'name' => $request->category
         ]);
 
-        return redirect()->route('manage-category');
+        return redirect()->route('manage-category')->with('message', "{$request->category} succesfully added to list category");
     }
 
     public function update(Category $category, Request $request) {
@@ -29,19 +29,22 @@ class ManageCategoryController extends Controller {
             'category' => ['required', 'unique:categories,name'],
         ]);
 
+        $oldName = $category->name;
+
         $category->update([
             'name' => $request->category
         ]);
 
-        return redirect()->route('manage-category');
+        return redirect()->route('manage-category')->with('message', "{$oldName} successfully updated to {$request->category}");
     }
 
     public function delete(Category $category) {
         //AUTHORIZATION
 
+        $categoryName = $category->name;
         $category->games()->delete();
         $category->delete();
 
-        return redirect()->route('manage-category');
+        return redirect()->route('manage-category')->with('message', "The {$categoryName} category successfully deleted");;
     }
 }

@@ -58,8 +58,9 @@ class GameController extends Controller {
                 'review' => $request->review,
                 'recommend' => $request->recommend == 'positive' ? true : false
             ]);
+            return redirect()->back()->with('message', 'Review successfully submited');;
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'You already review this item');;
     }
 }

@@ -59,7 +59,7 @@ class ManageGameController extends Controller {
             $img->move(public_path("assets/games/{$imageDir}"), "img_{$num}.jpg");
         }
 
-        return redirect()->route('manage-game');
+        return redirect()->route('manage-game')->with('message', "{$request->title} has been added to game list");
     }
 
     public function update(Game $game, Request $request) {
@@ -105,16 +105,17 @@ class ManageGameController extends Controller {
             $img->move(public_path("assets/games/{$imageDir}"), "img_{$num}.jpg");
         }
 
-        return redirect()->route('manage-game');
+        return redirect()->route('manage-game')->with('message', "{$request->title} has been updated");;
     }
 
     public function destroy(Game $game) {
 
         // AUTHORIZATION
         File::deleteDirectory(public_path("assets/games/{$game->image}/"));
+        $title = $game->title;
         $game->reviews()->delete();
         $game->delete();
 
-        return redirect()->route('manage-game');
+        return redirect()->route('manage-game')->with('message', "{$title} has been deleted from game list");;
     }
 }

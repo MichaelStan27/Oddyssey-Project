@@ -30,14 +30,16 @@ class CartController extends Controller {
             'game_id' => $request->gameId
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Item succesfully added to cart');
     }
 
     public function destroy(Request $request) {
         $user = Auth::user();
 
-        $user->carts()->where('game_id', $request->gameId)->firstOrFail()->delete();
+        if (!$user->carts()->where('game_id', $request->gameId)->firstOrFail()->delete()) {
+            return redirect()->back()->with('message', 'Failed to remove item');
+        }
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Item removed');
     }
 }

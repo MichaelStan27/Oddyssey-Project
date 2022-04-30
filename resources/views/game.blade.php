@@ -98,16 +98,18 @@
         @endauth
 
         <h1 class="text-gray-600 text-lg w-3/4 mb-2">Users Reviews</h1>
-        @foreach ($currReviews as $review)
+        @forelse ($currReviews as $item)
             <div class="bg-white w-full rounded-md p-3 mb-3 relative shadow-md">
-                <h1 class="font-semibold">{{ $review->user->name }}</h1>
+                <h1 class="font-semibold">{{ $item->user->name }}</h1>
                 <p class="absolute top-2 right-3 text-sm text-gray-500">
-                    {{ date('d M, Y  h:m A', strtotime($review->created_at)) }}</p>
+                    {{ date('d M, Y  h:m A', strtotime($item->created_at)) }}</p>
                 <p class="text-gray-500 text-sm my-2">
-                    {{ $review->recommend == 1 ? 'Recommended' : 'Not Recommended' }}
+                    {{ $item->recommend == 1 ? 'Recommended' : 'Not Recommended' }}
                 </p>
-                <p>{{ $review->review }}</p>
+                <p>{{ $item->review }}</p>
             </div>
-        @endforeach
+        @empty
+            <h1 class="text-gray-500">This game has no review</h1>
+        @endforelse
     </div>
 @endsection

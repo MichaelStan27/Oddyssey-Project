@@ -15,3 +15,9 @@ adminDropdownButton.addEventListener("click", () => {
     adminDropdownMenu.style.display =
         adminDropdownMenu.style.display !== "block" ? "block" : "none";
 });
+
+const flashCard = document.querySelector("#flash-card");
+
+setTimeout(() => {
+    flashCard.style.opacity = 0;
+}, 1500);

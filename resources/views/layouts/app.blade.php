@@ -11,6 +11,7 @@
 </head>
 
 <body class="bg-gray-200">
+    @include('partials.flash-card')
     @include('partials.navbar')
     @yield('content')
 </body>

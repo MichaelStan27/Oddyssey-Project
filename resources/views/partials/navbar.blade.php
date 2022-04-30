@@ -10,9 +10,11 @@
             <li class="px-4 {{ Route::is('cart') ? 'tab-active' : '' }}">
                 <a href="{{ route('cart') }}" class="px-2 block my-4">Cart</a>
             </li>
-            <li class="px-4">
-                @include('partials.admin-dropdown')
-            </li>
+            @can('admin')
+                <li class="px-4">
+                    @include('partials.admin-dropdown')
+                </li>
+            @endcan
         @endauth
     </ul>
 

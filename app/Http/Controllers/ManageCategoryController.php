@@ -8,18 +8,12 @@ use Illuminate\Http\Request;
 class ManageCategoryController extends Controller {
     public function index() {
 
-        // Authorization
-        $this->authorize('admin');
-
         return view('manage-category', [
             'categories' => Category::paginate(10)
         ]);
     }
 
     public function store(Request $request) {
-
-        // Authorization
-        $this->authorize('admin');
 
         $request->validate([
             'category' => ['required', 'unique:categories,name'],
@@ -33,9 +27,6 @@ class ManageCategoryController extends Controller {
     }
 
     public function update(Category $category, Request $request) {
-
-        // Authorization
-        $this->authorize('admin');
 
         $request->validate([
             'category' => ['required', 'unique:categories,name'],
@@ -51,9 +42,6 @@ class ManageCategoryController extends Controller {
     }
 
     public function delete(Category $category) {
-
-        // Authorization
-        $this->authorize('admin');
 
         $categoryName = $category->name;
         $category->games()->delete();

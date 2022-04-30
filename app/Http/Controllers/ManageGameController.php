@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\File;
 
 class ManageGameController extends Controller {
     public function index() {
-        // Authorization
-        $this->authorize('admin');
 
         return view('manage-game', [
             'games' => Game::with('category')->paginate(10)
@@ -19,9 +17,6 @@ class ManageGameController extends Controller {
     }
 
     public function store(Request $request) {
-
-        // Authorization
-        $this->authorize('admin');
 
         $request->validate(
             [
@@ -69,9 +64,6 @@ class ManageGameController extends Controller {
 
     public function update(Game $game, Request $request) {
 
-        // Authorization
-        $this->authorize('admin');
-
         $request->validate(
             [
                 'title' => ['required'],
@@ -116,9 +108,6 @@ class ManageGameController extends Controller {
     }
 
     public function destroy(Game $game) {
-
-        // Authorization
-        $this->authorize('admin');
 
         File::deleteDirectory(public_path("assets/games/{$game->image}/"));
         $title = $game->title;

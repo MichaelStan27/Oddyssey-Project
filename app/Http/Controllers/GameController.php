@@ -32,6 +32,7 @@ class GameController extends Controller {
             'gameData' => [
                 'id' => $game->id,
                 'image' => $game->image,
+                'imgCount' => $game->img_count,
                 'title' => $game->title,
                 'desc' => Str::limit($game->description, 200, $end = '...'),
                 'price' => $game->price == 0 ? 'FREE' : "IDR {$game->price}",

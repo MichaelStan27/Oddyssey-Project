@@ -32,10 +32,10 @@
                 </button>
                 <img data-carousel="true" src="{{ asset("/assets/games/{$gameData['image']}/img_1.jpg") }}"
                     class="h-full w-full object-cover absolute inset-0 -z-10 transition-opacity duration-1000">
-                <img data-carousel="true" src="{{ asset("/assets/games/{$gameData['image']}/img_2.jpg") }}"
-                    class="h-full w-full object-cover absolute inset-0 -z-10 transition-opacity duration-1000 opacity-0">
-                <img data-carousel="true" src="{{ asset("/assets/games/{$gameData['image']}/img_3.jpg") }}"
-                    class="h-full w-full object-cover absolute inset-0 -z-10 transition-opacity duration-1000 opacity-0">
+                @for ($i = 2; $i <= $gameData['imgCount']; $i++)
+                    <img data-carousel="true" src="{{ asset("/assets/games/{$gameData['image']}/img_{$i}.jpg") }}"
+                        class="h-full w-full object-cover absolute inset-0 -z-10 transition-opacity duration-1000 opacity-0">
+                @endfor
             </div>
         </div>
         <div class="m-auto rounded-md flex justify-around bg-white mb-2 shadow-md">

@@ -21,8 +21,21 @@
                     </form>
                 </div>
             </div>
-            <div class="w-[65%] shadow-md">
-                <img src="{{ asset("/assets/games/{$gameData['image']}/img_1.jpg") }}" class="h-full object-cover">
+            <div class="w-[65%] relative shadow-md">
+                <button id="carousel-prev-btn"
+                    class="absolute left-5 bottom-1/2 translate-y-1/2 bg-white rounded-md p-3 select-none font-bold">
+                    {{ '<-' }}
+                </button>
+                <button id="carousel-next-btn"
+                    class="absolute right-5 bottom-1/2 translate-y-1/2 bg-white rounded-md p-3 select-none font-bold">
+                    {{ '->' }}
+                </button>
+                <img data-carousel="true" src="{{ asset("/assets/games/{$gameData['image']}/img_1.jpg") }}"
+                    class="h-full w-full object-cover absolute inset-0 -z-10 transition-opacity duration-1000">
+                <img data-carousel="true" src="{{ asset("/assets/games/{$gameData['image']}/img_2.jpg") }}"
+                    class="h-full w-full object-cover absolute inset-0 -z-10 transition-opacity duration-1000 opacity-0">
+                <img data-carousel="true" src="{{ asset("/assets/games/{$gameData['image']}/img_3.jpg") }}"
+                    class="h-full w-full object-cover absolute inset-0 -z-10 transition-opacity duration-1000 opacity-0">
             </div>
         </div>
         <div class="m-auto rounded-md flex justify-around bg-white mb-2 shadow-md">

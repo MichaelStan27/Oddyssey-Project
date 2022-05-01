@@ -18,6 +18,10 @@ class LoginController extends Controller {
             'password' => ['required', 'min:8']
         ]);
 
+        if ($request->remember) {
+            Auth::setRememberDuration(2 * 24 * 60); // 2 Days in minutes
+        }
+
         if (Auth::attempt($request->only('email', 'password'), $request->remember)) {
             return redirect()->route('dashboard')->with('message', 'Login successful');;
         }

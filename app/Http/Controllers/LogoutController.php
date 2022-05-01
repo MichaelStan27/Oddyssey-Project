@@ -9,6 +9,11 @@ class LogoutController extends Controller {
 
     public function store() {
         Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
         return redirect()->route('dashboard');
     }
 }

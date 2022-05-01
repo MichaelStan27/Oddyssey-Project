@@ -46,3 +46,30 @@ if (flashCard) {
         flashCard.style.opacity = 0;
     }, 1500);
 }
+
+// Live search
+const inputSearchbar = document.querySelector("#searchbar > input");
+const resultsContainer = document.querySelector("#results-container");
+
+function fetchResult(query) {
+    const queryParam = new URLSearchParams({
+        q: query,
+    });
+
+    fetch(`/livesearch?${queryParam}`).then((rawResp) => {
+        if (rawResp.status !== 200) return;
+        rawResp.json().then((resp) => {
+            if (resp.status !== "OK") resultsContainer.innerHTML = "";
+            else resultsContainer.innerHTML = resp.data;
+        });
+    });
+}
+
+inputSearchbar?.addEventListener("input", (e) => {
+    if (e.target.value === "") {
+        resultsContainer.innerHTML = "";
+        return;
+    }
+
+    fetchResult(e.target.value);
+});

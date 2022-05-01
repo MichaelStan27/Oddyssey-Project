@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LogoutController extends Controller {
 
-    public function store() {
+    public function store(Request $request) {
         Auth::logout();
 
         $request->session()->invalidate();

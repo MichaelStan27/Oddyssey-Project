@@ -81,5 +81,6 @@ Route::get('/games/{game}', [GameController::class, 'index'])->name('game');
 Route::post('/games/{game}/review', [GameController::class, 'store'])->middleware('auth')->name('review');
 
 Route::get('/search', [SearchController::class, 'index'])->name('search');
+Route::get('/livesearch', [SearchController::class, 'livesearch']);
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

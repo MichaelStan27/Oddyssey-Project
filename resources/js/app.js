@@ -71,5 +71,11 @@ inputSearchbar?.addEventListener("input", (e) => {
         return;
     }
 
-    fetchResult(e.target.value);
+    // Optimize live search utilizing closure
+    (() => {
+        const query = e.target.value;
+        setTimeout(() => {
+            if (query === e.target.value) fetchResult(query);
+        }, 300);
+    })();
 });

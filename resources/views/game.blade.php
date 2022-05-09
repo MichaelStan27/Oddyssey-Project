@@ -104,7 +104,7 @@
                 <p class="absolute top-2 right-3 text-sm text-gray-500">
                     {{ $item->created_at }}</p>
                 <p class="text-gray-500 text-sm my-2">
-                    {{ $item->recommend == 1 ? 'Recommended' : 'Not Recommended' }}
+                    {{ $item->review_type }}
                 </p>
                 <p>{{ $item->review }}</p>
             </div>

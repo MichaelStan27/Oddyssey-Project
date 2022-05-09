@@ -23,4 +23,8 @@ class Review extends Model {
     public function getCreatedAtAttribute($date) {
         return date('d M, Y  h:m A', strtotime($date));
     }
+
+    public function getReviewTypeAttribute() {
+        return $this->recommend ? 'Recommended' : 'Not Recommended';
+    }
 }

@@ -3,8 +3,8 @@
 @php
 $image = $game->image;
 $title = $game->title;
-$desc = Str::limit($game->description, 100, $end = '...');
-$price = $game->price == 0 ? 'FREE' : "IDR {$game->price}";
+$desc = $game->short_description;
+$price = $game->price;
 @endphp
 
 <a href="{{ route('game', $game) }}">

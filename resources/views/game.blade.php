@@ -102,7 +102,7 @@
             <div class="bg-white w-full rounded-md p-3 mb-3 relative shadow-md">
                 <h1 class="font-semibold">{{ $item->user->name }}</h1>
                 <p class="absolute top-2 right-3 text-sm text-gray-500">
-                    {{ date('d M, Y  h:m A', strtotime($item->created_at)) }}</p>
+                    {{ $item->created_at }}</p>
                 <p class="text-gray-500 text-sm my-2">
                     {{ $item->recommend == 1 ? 'Recommended' : 'Not Recommended' }}
                 </p>

@@ -14,7 +14,7 @@
             <div class="w-full">
                 <x-game-card-rect :game="$game">
                     <div>
-                        <p class="text-right mb-2">{{ $game->price == 0 ? 'FREE' : "IDR {$game->price}" }}</p>
+                        <p class="text-right mb-2">{{ $game->price }}</p>
                         <div class="flex gap-3 text-white">
                             <form action="{{ route('update-game', $game) }}" method="POST">
                                 @csrf

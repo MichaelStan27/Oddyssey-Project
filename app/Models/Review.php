@@ -19,4 +19,8 @@ class Review extends Model {
     public function game() {
         return $this->belongsTo(Game::class);
     }
+
+    public function getCreatedAtAttribute($date) {
+        return date('d M, Y  h:m A', strtotime($date));
+    }
 }

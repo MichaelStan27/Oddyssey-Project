@@ -20,7 +20,7 @@
                 <a href="{{ route('game', $game) }}" class="block">
                     <x-game-card-rect :game="$game">
                         <p class="text-lg">
-                            {{ $game->price == 0 ? 'FREE' : "IDR {$game->price}" }}
+                            {{ $game->price }}
                         </p>
                     </x-game-card-rect>
                 </a>

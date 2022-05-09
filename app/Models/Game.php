@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Game extends Model {
     use HasFactory;
@@ -18,5 +19,21 @@ class Game extends Model {
 
     public function reviews() {
         return $this->hasMany(Review::class);
+    }
+
+    public function getPriceAttribute($price) {
+        return $price == 0 ? 'FREE' : "IDR {$price}";
+    }
+
+    public function getLongDescriptionAttribute() {
+        return Str::limit($this->description, 200, $end = '...');
+    }
+
+    public function getShortDescriptionAttribute() {
+        return Str::limit($this->description, 100, $end = '...');
+    }
+
+    public function getReleaseDateAttribute() {
+        return date('d M, Y', strtotime($this->created_at));
     }
 }

@@ -4,7 +4,7 @@
 $image = $game->image;
 $title = $game->title;
 $cat = $game->category->name;
-$price = $game->price == 0 ? 'FREE' : "IDR {$game->price}";
+$price = $game->price;
 @endphp
 
 <div class="flex items-center justify-between h-full mb-2">

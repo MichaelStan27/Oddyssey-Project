@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Response;
 class SearchController extends Controller {
     public function index(Request $request) {
         $q = $request->query('q');
-        $count = 10;
+        $count = 15;
 
-        $results = $q ? Game::where('title', 'LIKE', "%$q%")->paginate($count) : Game::paginate($count);
+        $results = Game::where('title', 'LIKE', "%$q%")->paginate($count)->appends($request->query());
 
         return view('search', [
             'results' => $results

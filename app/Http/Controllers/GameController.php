@@ -14,34 +14,24 @@ class GameController extends Controller {
         // Lazy eager load
         $game = $game->load('category', 'reviews');
 
-        $reviews = $game->reviews->groupBy('recommend')->map->count();
+        $reviews_count = $game->reviews->groupBy('recommend');
 
-        $relatedGames = $game->category
+        $related_games = $game->category
             ->games()
             ->limit(3)
             ->whereNotIn('id', [$game->id])
             ->get();
 
-        $currReviews = $game
+        $reviews = $game
             ->reviews()
             ->with('user')
             ->get();
 
         return view('game', [
             'game' => $game,
-            'gameData' => [
-                'id' => $game->id,
-                'image' => $game->image,
-                'imgCount' => $game->img_count,
-                'title' => $game->title,
-                'desc' => $game->long_description,
-                'price' => $game->price,
-                'date' => date('d M, Y', strtotime($game->created_at)),
-                'category' => $game->category->name
-            ],
+            'reviews_count' => $reviews_count,
+            'related_games' => $related_games,
             'reviews' => $reviews,
-            'relatedGames' => $relatedGames,
-            'currReviews' => $currReviews,
         ]);
     }
 

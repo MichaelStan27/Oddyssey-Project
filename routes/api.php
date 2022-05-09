@@ -18,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 
 // Public endpoint
 Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/login', [LoginController::class, 'store']);

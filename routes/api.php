@@ -19,3 +19,8 @@ use Illuminate\Support\Facades\Route;
 // Public endpoint
 Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/login', [LoginController::class, 'store']);
+
+// Authenticated endpoint (access token required)
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('/transactions', [TransactionController::class, 'index']);
+});

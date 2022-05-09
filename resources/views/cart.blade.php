@@ -25,6 +25,14 @@
                 </div>
             </div>
         </div>
+        <form action="{{ route('cart.checkout') }}" method="post">
+            @csrf
+            <div class="text-right mt-4">
+                <button type="submit"
+                    class="bg-gray-700 py-2 px-4 rounded-md font-medium text-white shadow-lg">CHECKOUT</button>
+            </div>
+
+        </form>
 
     </div>
 @endsection

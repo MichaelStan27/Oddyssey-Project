@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,5 +38,21 @@ class CartController extends Controller {
         }
 
         return redirect()->back()->with('message', 'Item removed');
+    }
+
+    public function checkout() {
+        $user = Auth::user();
+        $carts = $user->carts;
+
+        if (!$user->carts()->count()) {
+            return redirect()->back()->with('message', 'Cart is empty');
+        }
+
+        foreach ($carts as $cart) {
+            Transaction::create($cart->only('game_id', 'user_id'));
+            $cart->delete();
+        }
+
+        return redirect()->back()->with('message', 'Checkout successful');
     }
 }

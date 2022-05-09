@@ -1,18 +1,7 @@
 <?php
 
-use App\Http\Controllers\AddCategoryController;
-use App\Http\Controllers\AddGameController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\GameController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\ManageCategoryController;
-use App\Http\Controllers\ManageGameController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\UpdateCategoryController;
-use App\Http\Controllers\UpdateGameController;
+namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
 
 /*

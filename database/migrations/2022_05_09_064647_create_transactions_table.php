@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Schema;
 
 class CreateTransactionsTable extends Migration {
@@ -15,7 +16,7 @@ class CreateTransactionsTable extends Migration {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('game_id')->constrained()->onDelete('cascade');
-            $table->date('purchased_at');
+            $table->date('purchased_at')->default(Carbon::now());
             $table->timestamps();
         });
     }

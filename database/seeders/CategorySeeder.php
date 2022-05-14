@@ -29,12 +29,22 @@ class CategorySeeder extends Seeder {
                 'updated_at' => now()
             ],
             [
-                'name' => 'Sport and Racing',
+                'name' => 'Sport',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'name' => 'Adventure',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'MOBA',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Racing',
                 'created_at' => now(),
                 'updated_at' => now()
             ],

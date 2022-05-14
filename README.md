@@ -12,5 +12,10 @@ This project was made to fulfill the requirements of the web programming lab's f
 1. Clone this repository (`git clone https://github.com/MichaelStan27/Oddyssey-Project`)
 2. Install all project dependencies (`npm install && composer install`)
 3. Configure `.env` file
-4. Build project assets (`npm run dev`)
-5. Preview project (`php artisan serve`)
+4. Run database migration and seeder (`php migration --seed`)
+5. Build project assets (`npm run dev`)
+6. Preview project (`php artisan serve`)
+
+### Additional setup
+1. Generate encryption keys for API (`php artisan passport:install`)
+   This command needed for API to work properly

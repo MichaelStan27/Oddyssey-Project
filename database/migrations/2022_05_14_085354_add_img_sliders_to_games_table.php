@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddImgCountToGamesTable extends Migration {
+class AddImgSlidersToGamesTable extends Migration {
     /**
      * Run the migrations.
      *
@@ -12,7 +12,7 @@ class AddImgCountToGamesTable extends Migration {
      */
     public function up() {
         Schema::table('games', function (Blueprint $table) {
-            $table->integer('img_count');
+            $table->string('img_sliders');
         });
     }
 
@@ -23,7 +23,7 @@ class AddImgCountToGamesTable extends Migration {
      */
     public function down() {
         Schema::table('games', function (Blueprint $table) {
-            $table->dropColumn('img_count');
+            $table->dropColumn('img_sliders');
         });
     }
 }

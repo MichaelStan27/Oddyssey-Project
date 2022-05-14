@@ -41,24 +41,29 @@ class ManageGameController extends Controller {
         $salt = Str::random(10);
         $imageDir = "{$request->title}_{$salt}";
 
+        // Moving slider image and constructing sliders array
+        $img_sliders = [];
+        foreach ($request->slider as $idx => $img) {
+            $num = $idx + 1;
+            $img_ext = $img->extension();
+            $img_name = "img_{$num}.{$img_ext}";
+
+            array_push($img_sliders, $img_name);
+            $img->move(public_path("assets/games/{$imageDir}"), $img_name);
+        }
+
         // Saving data to database
         Game::create([
             'title' => $request->title,
             'category_id' => $categoryId,
             'description' => $request->desc,
-            'img_count' => count($request->slider),
+            'img_sliders' => implode(',', $img_sliders),
             'price' => $request->price,
             'image' => $imageDir
         ]);
 
         // Moving thumbnail
         $request->thumbnail->move(public_path("assets/games/{$imageDir}"), "thumb.jpg");
-
-        // Moving slider image
-        foreach ($request->slider as $idx => $img) {
-            $num = $idx + 1;
-            $img->move(public_path("assets/games/{$imageDir}"), "img_{$num}.jpg");
-        }
 
         return redirect()->route('manage-game.view')->with('message', "{$request->title} has been added to game list");
     }
@@ -86,24 +91,29 @@ class ManageGameController extends Controller {
         // For image column in db
         $imageDir = $game->image;
 
+        // Moving slider image and constructing sliders array
+        $img_sliders = [];
+        foreach ($request->slider as $idx => $img) {
+            $num = $idx + 1;
+            $img_ext = $img->extension();
+            $img_name = "img_{$num}.{$img_ext}";
+
+            array_push($img_sliders, $img_name);
+            $img->move(public_path("assets/games/{$imageDir}"), $img_name);
+        }
+
         // Saving data to database
         $game->update([
             'title' => $request->title,
             'category_id' => $categoryId,
             'description' => $request->desc,
-            'img_count' => count($request->slider),
+            'img_sliders' => implode(',', $img_sliders),
             'price' => $request->price,
             'image' => $imageDir
         ]);
 
         // Moving thumbnail
         $request->thumbnail->move(public_path("assets/games/{$imageDir}"), "thumb.jpg");
-
-        // Moving slider image
-        foreach ($request->slider as $idx => $img) {
-            $num = $idx + 1;
-            $img->move(public_path("assets/games/{$imageDir}"), "img_{$num}.jpg");
-        }
 
         return redirect()->route('manage-game.view')->with('message', "{$request->title} has been updated");;
     }

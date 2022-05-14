@@ -30,12 +30,15 @@
                     class="absolute right-5 bottom-1/2 translate-y-1/2 bg-white rounded-md p-3 select-none font-bold">
                     {{ '->' }}
                 </button>
-                <img data-carousel="true" src="{{ asset("/assets/games/{$game->image}/img_1.jpg") }}"
-                    class="h-full w-full object-cover absolute inset-0 -z-10 transition-opacity duration-1000">
-                @for ($i = 2; $i <= $game->img_count; $i++)
-                    <img data-carousel="true" src="{{ asset("/assets/games/{$game->image}/img_{$i}.jpg") }}"
-                        class="h-full w-full object-cover absolute inset-0 -z-10 transition-opacity duration-1000 opacity-0">
-                @endfor
+                @foreach ($game->sliders as $idx => $img)
+                    @if ($idx === 0)
+                        <img data-carousel="true" src="{{ asset("/assets/games/{$game->image}/{$img}") }}"
+                            class="h-full w-full object-cover absolute inset-0 -z-10 transition-opacity duration-1000">
+                    @else
+                        <img data-carousel="true" src="{{ asset("/assets/games/{$game->image}/{$img}") }}"
+                            class="h-full w-full object-cover absolute inset-0 -z-10 transition-opacity duration-1000 opacity-0">
+                    @endif
+                @endforeach
             </div>
         </div>
         <div class="m-auto rounded-md flex justify-around bg-white mb-2 shadow-md">

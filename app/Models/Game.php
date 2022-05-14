@@ -26,6 +26,10 @@ class Game extends Model {
         return $this->price == 0 ? 'FREE' : "IDR {$format_price}";
     }
 
+    public function getSlidersAttribute() {
+        return explode(',', $this->img_sliders);
+    }
+
     public function getLongDescriptionAttribute() {
         return Str::limit($this->description, 200, $end = '...');
     }

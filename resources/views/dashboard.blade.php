@@ -16,7 +16,7 @@
 
         <h1 class="font-bold text-2xl mb-4">Hot Games</h1>
         <div class="container flex flex-col gap-4">
-            @foreach ($hotGames as $game)
+            @forelse ($hotGames as $game)
                 <a href="{{ route('game', $game) }}" class="block">
                     <x-game-card-rect :game="$game">
                         <p class="text-lg">
@@ -24,7 +24,9 @@
                         </p>
                     </x-game-card-rect>
                 </a>
-            @endforeach
+            @empty
+                <h1 class="text-gray-500">There is no transaction currently</h1>
+            @endforelse
         </div>
     </div>
 @endsection

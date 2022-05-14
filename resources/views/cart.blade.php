@@ -21,7 +21,7 @@
                     <p class="text-gray-500">{{ $cartsCount }} {{ Str::plural('game', $cartsCount) }}</p>
                 </div>
                 <div>
-                    <h1 class="font-medium text-lg text-gray-600">IDR {{ $cartsTotal }}</h1>
+                    <h1 class="font-medium text-lg text-gray-600">IDR {{ number_format($cartsTotal, 0, ',', '.') }}</h1>
                 </div>
             </div>
         </div>

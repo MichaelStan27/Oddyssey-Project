@@ -4,7 +4,7 @@
 $image = $game->image;
 $title = $game->title;
 $desc = $game->short_description;
-$price = $game->price;
+$price = $game->price_str;
 @endphp
 
 <a href="{{ route('game', $game) }}">

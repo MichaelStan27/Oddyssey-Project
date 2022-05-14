@@ -21,9 +21,9 @@ class Game extends Model {
         return $this->hasMany(Review::class);
     }
 
-    public function getPriceAttribute($price) {
-        $format_price = number_format($price, 0, ',', '.');
-        return $price == 0 ? 'FREE' : "IDR {$format_price}";
+    public function getPriceStrAttribute() {
+        $format_price = number_format($this->price, 0, ',', '.');
+        return $this->price == 0 ? 'FREE' : "IDR {$format_price}";
     }
 
     public function getLongDescriptionAttribute() {

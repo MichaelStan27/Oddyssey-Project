@@ -10,7 +10,7 @@
                 <div class="m-5">
                     <h1 class="text-lg font-semibold">{{ $game->title }}</h1>
                     <p class="text-sm">{{ $game->long_description }}</p>
-                    <p class="text-lg font-semibold mt-5 mb-1">{{ $game->price }}</p>
+                    <p class="text-lg font-semibold mt-5 mb-1">{{ $game->price_str }}</p>
                     <form action="{{ route('cart') }}" method="post">
                         @csrf
                         <input type="hidden" name="gameId" value="{{ $game->id }}">

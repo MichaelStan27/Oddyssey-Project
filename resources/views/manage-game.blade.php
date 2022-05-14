@@ -14,7 +14,7 @@
             <div class="w-full">
                 <x-game-card-rect :game="$game">
                     <div>
-                        <p class="text-right mb-2">{{ $game->price }}</p>
+                        <p class="text-right mb-2">{{ $game->price_str }}</p>
                         <div class="flex gap-3 text-white">
                             <form action="{{ route('update-game', $game) }}" method="POST">
                                 @csrf

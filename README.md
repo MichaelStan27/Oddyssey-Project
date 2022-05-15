@@ -21,3 +21,4 @@ This project was made to fulfill the requirements of the web programming lab's f
    This command needed for API to work properly
 2. Link storage to public directory (`php artisan storage:link`)
    Put all the games assets in `storage/app/public/games`
+   Link asset `https://arv.cx/AssetWP`

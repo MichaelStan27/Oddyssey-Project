@@ -48,9 +48,6 @@ class ManageCategoryController extends Controller {
         $categoryName = $category->name;
         foreach ($category->games as $game) {
             Storage::deleteDirectory("public/games/{$game->image}/");
-            $game->reviews()->delete();
-            $game->transactions()->delete();
-            $game->delete();
         }
         $category->delete();
 

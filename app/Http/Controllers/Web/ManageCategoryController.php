@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ManageCategoryController extends Controller {
     public function index() {
@@ -45,7 +46,11 @@ class ManageCategoryController extends Controller {
     public function delete(Category $category) {
 
         $categoryName = $category->name;
-        $category->games()->delete();
+        foreach ($category->games as $game) {
+            Storage::deleteDirectory("public/games/{$game->image}/");
+            $game->reviews()->delete();
+            $game->delete();
+        }
         $category->delete();
 
         return redirect()->route('manage-category.view')->with('message', "The {$categoryName} category successfully deleted");;

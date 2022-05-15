@@ -19,3 +19,5 @@ This project was made to fulfill the requirements of the web programming lab's f
 ### Additional setup
 1. Generate encryption keys for API (`php artisan passport:install`)
    This command needed for API to work properly
+2. Link storage to public directory (`php artisan storage:link`)
+   Put all the games assets in `storage/app/public/games`

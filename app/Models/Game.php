@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Review;
+use App\Models\Category;
+use App\Models\Transaction;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Game extends Model {
     use HasFactory;
@@ -19,6 +22,10 @@ class Game extends Model {
 
     public function reviews() {
         return $this->hasMany(Review::class);
+    }
+
+    public function transactions() {
+        return $this->hasMany(Transaction::class);
     }
 
     public function getPriceStrAttribute() {

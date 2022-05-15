@@ -123,6 +123,7 @@ class ManageGameController extends Controller {
         Storage::deleteDirectory("public/games/{$game->image}/");
         $title = $game->title;
         $game->reviews()->delete();
+        $game->transactions()->delete();
         $game->delete();
 
         return redirect()->route('manage-game.view')->with('message', "{$title} has been deleted from game list");;

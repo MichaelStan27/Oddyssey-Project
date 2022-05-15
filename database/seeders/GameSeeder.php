@@ -204,6 +204,16 @@ class GameSeeder extends Seeder {
                 'updated_at' => now()
             ],
             [
+                'title' => 'NEON SPEED',
+                'category_id' => 7,
+                'description' => 'NEON SPEED is a casual racing game.You need to ride on a high speed between another cars on the road and earn points to improve your car later.You can choose the best car that will absolutely fits you!',
+                'price' => 53000,
+                'image' => 'NEON SPEED',
+                'img_sliders' => 'img_1.jpg,img_2.jpg,img_3.jpg',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
                 'title' => 'Omega Pilot',
                 'category_id' => 7,
                 'description' => 'Omega Pilot is an exciting first-person VR racing game with realistic physics and control mechanics. Compete for in-ring races with other pilots in asynchronous multiplayer and enjoy the view from the cockpit at high speed!',
@@ -219,6 +229,96 @@ class GameSeeder extends Seeder {
                 'description' => 'REDESIGNED ENGINE. NEW CONTROLS. ALL THE FEATURES YOU CAN HANDLE. Get ripped out of the stands and hit with complete control of the WWE Universe. Hitting this hard has never been so easy. WWE 2K22: IT HITS DIFFERENT',
                 'price' => 659000,
                 'image' => 'WWE 2K22',
+                'img_sliders' => 'img_1.jpg,img_2.jpg,img_3.jpg',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'title' => 'Out of the Park Baseball 23',
+                'category_id' => 4,
+                'description' => 'Play What The Pros Play! Officially licensed by MLB, the MLB Players Inc. and KBO, Out of the Park Baseball 23 is the newest in the award-winning sports strategy series. A sports fan’s dream come true - and the only game ever to win Metacritic PC Game of the Year Award TWICE.',
+                'price' => 170000,
+                'image' => 'Out of the Park Baseball 23',
+                'img_sliders' => 'img_1.jpg,img_2.jpg,img_3.jpg',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'title' => 'Subnautica',
+                'category_id' => 8,
+                'description' => 'Descend into the depths of an alien underwater world filled with wonder and peril. Craft equipment, pilot submarines and out-smart wildlife to explore lush coral reefs, volcanoes, cave systems, and more - all while trying to survive.',
+                'price' => 140000,
+                'image' => 'Subnautica',
+                'img_sliders' => 'img_1.jpg,img_2.jpg,img_3.jpg',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'title' => '7 Days to Die',
+                'category_id' => 8,
+                'description' => '7 Days to Die is an open-world game that is a unique combination of first-person shooter, survival horror, tower defense, and role-playing games. Play the definitive zombie survival sandbox RPG that came first. Navezgane awaits!',
+                'price' => 120000,
+                'image' => '7 Days to Die',
+                'img_sliders' => 'img_1.jpg,img_2.jpg,img_3.jpg',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'title' => 'Tin Can',
+                'category_id' => 8,
+                'description' => 'You\'ve barely managed to escape your exploding spaceship. Now in an old escape pod, you hurtle through space at the mercy of the cosmos. With no knowledge of the pod’s complex systems, your life depends on a technical manual and your own wits. How long can you survive?',
+                'price' => 110000,
+                'image' => 'Tin Can',
+                'img_sliders' => 'img_1.jpg,img_2.jpg,img_3.jpg',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'title' => 'Nomad Survival',
+                'category_id' => 8,
+                'description' => 'Battle against hordes of enemies, conquer Boss encounters, and explore various character and skill combinations in this time-based auto-attacking Roguelite in your quest to become stronger and defeat the most menacing of creatures that lay in wait at the end of each run.',
+                'price' => 25000,
+                'image' => 'Nomad Survival',
+                'img_sliders' => 'img_1.jpg,img_2.jpg,img_3.jpg',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'title' => 'Turbo Overkill',
+                'category_id' => 2,
+                'description' => 'Johnny Turbo needs to clean up Paradise, a cyber city overrun by augmented minions under the cult control of the world\'s most advanced AI, Syn, who\'s looking to expand to world domination if not stopped here and now. Wall-running, Turbo Time, chain saw leg augments, flying cars and lots of booms.',
+                'price' => 110000,
+                'image' => 'Turbo Overkill',
+                'img_sliders' => 'img_1.jpg,img_2.jpg,img_3.jpg',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'title' => 'Hell Let Loose',
+                'category_id' => 2,
+                'description' => 'Join the ever expanding experience of Hell Let Loose - a hardcore World War Two first person shooter with epic battles of 100 players with infantry, tanks, artillery, a dynamically shifting front line and a unique resource based RTS-inspired meta-game.',
+                'price' => 250000,
+                'image' => 'Hell Let Loose',
+                'img_sliders' => 'img_1.jpg,img_2.jpg,img_3.jpg',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'title' => 'Neptunia x SENRAN KAGURA: Ninja Wars',
+                'category_id' => 1,
+                'description' => 'Neptunia and SENRAN KAGURA join forces in this action-packed RPG!',
+                'price' => 210000,
+                'image' => 'Neptunia x SENRAN KAGURA Ninja Wars',
+                'img_sliders' => 'img_1.jpg,img_2.jpg,img_3.jpg',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'title' => 'Yu-Gi-Oh! Master Duel',
+                'category_id' => 9,
+                'description' => 'The definitive digital edition of the competitive card game that has been evolving for over 20 years! Duel at the highest level against Duelists all over the world.',
+                'price' => 0,
+                'image' => 'Yu-Gi-Oh! Master Duel',
                 'img_sliders' => 'img_1.jpg,img_2.jpg,img_3.jpg',
                 'created_at' => now(),
                 'updated_at' => now()

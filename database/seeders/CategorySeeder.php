@@ -48,6 +48,16 @@ class CategorySeeder extends Seeder {
                 'created_at' => now(),
                 'updated_at' => now()
             ],
+            [
+                'name' => 'Survival',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Card & Board',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
     }
 }

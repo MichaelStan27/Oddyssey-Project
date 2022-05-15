@@ -15,23 +15,23 @@ class ReviewSeeder extends Seeder {
         Review::insert([
             [
                 'user_id' => '1',
-                'game_id' => '1',
+                'game_id' => '30',
                 'review' => 'gamenya bagus sekali mantap',
                 'recommend' => true,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'user_id' => '1',
-                'game_id' => '1',
-                'review' => 'gamenya bagus',
+                'user_id' => '2',
+                'game_id' => '30',
+                'review' => 'gamenya bagus grafik oke',
                 'recommend' => true,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'user_id' => '1',
-                'game_id' => '1',
+                'user_id' => '3',
+                'game_id' => '30',
                 'review' => 'gamenya seru si mantap',
                 'recommend' => true,
                 'created_at' => now(),
@@ -39,49 +39,81 @@ class ReviewSeeder extends Seeder {
             ],
             [
                 'user_id' => '1',
-                'game_id' => '2',
+                'game_id' => '31',
                 'review' => 'gamenya seru banget',
                 'recommend' => true,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'user_id' => '1',
-                'game_id' => '4',
-                'review' => 'gamenya seru bingits',
+                'user_id' => '2',
+                'game_id' => '31',
+                'review' => 'gamenya mirip seperti kartunnya',
+                'recommend' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'user_id' => '3',
+                'game_id' => '31',
+                'review' => 'agak kurang menurutku karena kurang storyline',
+                'recommend' => false,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'user_id' => '2',
+                'game_id' => '24',
+                'review' => 'abis liat dari youtuber keren bang',
                 'recommend' => true,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'user_id' => '1',
-                'game_id' => '4',
-                'review' => 'gamenya seru deh mantap jd rekom',
-                'recommend' => true,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'user_id' => '1',
-                'game_id' => '6',
-                'review' => 'gamenya seru abis',
-                'recommend' => true,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'user_id' => '1',
-                'game_id' => '5',
+                'game_id' => '24',
                 'review' => 'gamenya seru mau direkom ke teman',
                 'recommend' => true,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'user_id' => '1',
-                'game_id' => '5',
+                'user_id' => '3',
+                'game_id' => '24',
                 'review' => 'gamenya bosenin',
                 'recommend' => false,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'user_id' => '2',
+                'game_id' => '25',
+                'review' => 'gamenya seru bikin senam jantung',
+                'recommend' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'user_id' => '3',
+                'game_id' => '25',
+                'review' => 'gamenya seru lawan zombie',
+                'recommend' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'user_id' => '2',
+                'game_id' => '17',
+                'review' => 'gamenya kurang hype g ada temen',
+                'recommend' => false,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'user_id' => '3',
+                'game_id' => '17',
+                'review' => 'gamenya oke la mayan seru',
+                'recommend' => true,
                 'created_at' => now(),
                 'updated_at' => now()
             ],

@@ -306,7 +306,7 @@ class GameSeeder extends Seeder {
             [
                 'title' => 'Neptunia x SENRAN KAGURA: Ninja Wars',
                 'category_id' => 1,
-                'description' => 'Neptunia and SENRAN KAGURA join forces in this action-packed RPG!',
+                'description' => 'Neptunia and SENRAN KAGURA join forces in this hack \'n slash RPG! Pair up 10 playable characters to slice through enemy hordes, channel the elements, and perform special character attacks. Then find your center with the Peaches & Cream Meditation minigame before taking on the post-game challenges of Yomi-Training!',
                 'price' => 210000,
                 'image' => 'Neptunia x SENRAN KAGURA Ninja Wars',
                 'img_sliders' => 'img_1.jpg,img_2.jpg,img_3.jpg',

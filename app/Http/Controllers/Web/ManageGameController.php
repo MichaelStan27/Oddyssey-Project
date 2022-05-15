@@ -7,7 +7,7 @@ use App\Models\Game;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ManageGameController extends Controller {
     public function index() {
@@ -49,7 +49,7 @@ class ManageGameController extends Controller {
             $img_name = "img_{$num}.{$img_ext}";
 
             array_push($img_sliders, $img_name);
-            $img->move(public_path("assets/games/{$imageDir}"), $img_name);
+            $img->storeAs("public/games/{$imageDir}", $img_name);
         }
 
         // Saving data to database
@@ -63,7 +63,7 @@ class ManageGameController extends Controller {
         ]);
 
         // Moving thumbnail
-        $request->thumbnail->move(public_path("assets/games/{$imageDir}"), "thumb.jpg");
+        $request->thumbnail->storeAs("public/games/{$imageDir}", "thumb.jpg");
 
         return redirect()->route('manage-game.view')->with('message', "{$request->title} has been added to game list");
     }
@@ -99,7 +99,7 @@ class ManageGameController extends Controller {
             $img_name = "img_{$num}.{$img_ext}";
 
             array_push($img_sliders, $img_name);
-            $img->move(public_path("assets/games/{$imageDir}"), $img_name);
+            $img->storeAs("public/games/{$imageDir}", $img_name);
         }
 
         // Saving data to database
@@ -113,14 +113,14 @@ class ManageGameController extends Controller {
         ]);
 
         // Moving thumbnail
-        $request->thumbnail->move(public_path("assets/games/{$imageDir}"), "thumb.jpg");
+        $request->thumbnail->storeAs("public/games/{$imageDir}", "thumb.jpg");
 
         return redirect()->route('manage-game.view')->with('message', "{$request->title} has been updated");;
     }
 
     public function destroy(Game $game) {
 
-        File::deleteDirectory(public_path("assets/games/{$game->image}/"));
+        Storage::deleteDirectory("public/games/{$game->image}/");
         $title = $game->title;
         $game->reviews()->delete();
         $game->delete();

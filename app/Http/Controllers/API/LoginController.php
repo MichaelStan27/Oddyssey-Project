@@ -24,9 +24,6 @@ class LoginController extends Controller {
 
         $user = Auth::user();
 
-        // Delete all generated token
-        $user->tokens()->delete();
-
         // Generate new access token
         $token = $user->createToken('api-token')->accessToken;
 

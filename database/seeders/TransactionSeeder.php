@@ -15,7 +15,7 @@ class TransactionSeeder extends Seeder {
         Transaction::insert([
             [
                 'user_id' => 2,
-                'game_id' => 31,
+                'game_id' => 17,
                 'purchased_at' => now(),
                 'created_at' => now(),
                 'updated_at' => now()
@@ -43,21 +43,21 @@ class TransactionSeeder extends Seeder {
             ],
             [
                 'user_id' => 2,
-                'game_id' => 27,
+                'game_id' => 15,
                 'purchased_at' => now(),
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'user_id' => 3,
-                'game_id' => 27,
+                'game_id' => 19,
                 'purchased_at' => now(),
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'user_id' => 3,
-                'game_id' => 31,
+                'game_id' => 15,
                 'purchased_at' => now(),
                 'created_at' => now(),
                 'updated_at' => now()
@@ -71,28 +71,28 @@ class TransactionSeeder extends Seeder {
             ],
             [
                 'user_id' => 3,
-                'game_id' => 30,
+                'game_id' => 19,
                 'purchased_at' => now(),
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'user_id' => 1,
-                'game_id' => 30,
+                'game_id' => 19,
                 'purchased_at' => now(),
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'user_id' => 1,
-                'game_id' => 31,
+                'game_id' => 17,
                 'purchased_at' => now(),
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'user_id' => 1,
-                'game_id' => 27,
+                'game_id' => 18,
                 'purchased_at' => now(),
                 'created_at' => now(),
                 'updated_at' => now()

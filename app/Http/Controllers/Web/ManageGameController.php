@@ -115,7 +115,7 @@ class ManageGameController extends Controller {
         // Moving thumbnail
         $request->thumbnail->storeAs("public/games/{$imageDir}", "thumb.jpg");
 
-        return redirect()->route('manage-game.view')->with('message', "{$request->title} has been updated");;
+        return redirect()->route('manage-game.view')->with('message', "{$request->title} has been updated");
     }
 
     public function destroy(Game $game) {
@@ -124,6 +124,6 @@ class ManageGameController extends Controller {
         $title = $game->title;
         $game->delete();
 
-        return redirect()->route('manage-game.view')->with('message', "{$title} has been deleted from game list");;
+        return redirect()->route('manage-game.view')->with('message', "{$title} has been deleted from game list");
     }
 }

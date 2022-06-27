@@ -51,6 +51,6 @@ class ManageCategoryController extends Controller {
         }
         $category->delete();
 
-        return redirect()->route('manage-category.view')->with('message', "The {$categoryName} category successfully deleted");;
+        return redirect()->route('manage-category.view')->with('message', "The {$categoryName} category successfully deleted");
     }
 }
